@@ -14,7 +14,7 @@ export function Hero() {
     };
 
     return (
-        <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden flex items-center">
+        <section className="relative min-h-[80vh] w-full overflow-hidden flex flex-col">
             <div className="absolute inset-0 z-0">
                 <Image
                     src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
@@ -26,7 +26,7 @@ export function Hero() {
                 <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[1px]" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 text-white">
+            <div className="container mx-auto px-6 relative z-10 text-white flex-1 flex flex-col justify-center pt-32 md:pt-48 pb-20">
                 <motion.div
                     {...{
                         initial: { opacity: 0, y: 30 },
