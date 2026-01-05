@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ProductDetailClient from "./product-detail-client";
 import { formatVND } from "@/lib/utils";
-import { getProductBySlug, getFeaturedProducts } from "@/lib/sanity";
+import { getProductBySlug, getFeaturedProducts, urlFor } from "@/lib/sanity";
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -22,6 +22,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const description = `Mua ${product.name} chính hãng, giá rẻ nhất Bắc Ninh. Bảo hành dài hạn. Xem ngay!`;
     const priceTag = product.price > 0 ? `Giá: ${formatVND(product.price)}` : "Liên hệ báo giá";
 
+    const imageUrl = product.image ? (typeof product.image === 'string' ? product.image : urlFor(product.image).url()) : '';
+
     return {
         title,
         description,
@@ -30,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
             description: `${priceTag}. Miễn phí vận chuyển Bắc Ninh.`,
             images: [
                 {
-                    url: product.image,
+                    url: imageUrl,
                     width: 800,
                     height: 800,
                     alt: product.name,
