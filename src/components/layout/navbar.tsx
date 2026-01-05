@@ -29,10 +29,10 @@ export function Navbar() {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-600 px-8 py-6 gpu-accel",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 gpu-accel",
                 scrolled
-                    ? "bg-white/70 backdrop-blur-md border-b border-white/20 shadow-ocean py-4"
-                    : "bg-transparent backdrop-blur-0"
+                    ? "bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-md py-3"
+                    : "bg-transparent"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -48,14 +48,14 @@ export function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-[11px] font-black uppercase tracking-[0.2em] text-blue-900/60 hover:text-primary transition-all hover:tracking-[0.25em]"
+                            className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="flex items-center space-x-2 bg-primary text-white px-8 py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-primary-light transition-all shadow-blue-glow active:scale-95"
+                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-light transition-all shadow-md active:scale-95"
                     >
                         <Phone size={14} />
                         <span>Gọi ngay</span>

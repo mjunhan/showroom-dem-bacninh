@@ -1,41 +1,55 @@
 @import "tailwindcss";
 
 @theme {
-    /* Grand Design: Ocean Luxury Palette */
-    --color-primary: #0e7490;
-    /* Cyan-700: Deep Ocean */
-    --color-primary-light: #0891b2;
-    /* Cyan-600 */
-    --color-secondary: #f0f9ff;
-    /* Blue-50: Foam White */
+    /* LOCKED Ocean Blue Design System */
+
+    /* Primary: Deep Ocean Blue (Buttons, Headers, CTA) */
+    --color-primary: #1e40af;
+    /* blue-800 */
+    --color-primary-light: #3b82f6;
+    /* blue-600 for hover states */
+    --color-primary-dark: #1e3a8a;
+    /* blue-900 for deep accents */
+
+    /* Secondary: Soft Blue-Grey (Backgrounds, subtle elements) */
+    --color-secondary: #f1f5f9;
+    /* slate-100 */
+    --color-secondary-dark: #e2e8f0;
+    /* slate-200 */
+
+    /* Accent: Warm Sand/Gold (Highlights, badges) */
     --color-accent: #f59e0b;
-    /* Amber-500: Subtle Gold */
+    /* amber-500 */
     --color-accent-soft: #fef3c7;
-    /* Amber-100 */
+    /* amber-100 */
 
-    --color-blue-950: #083344;
-    /* Cyan-950 */
-    --color-blue-900: #164e63;
-    /* Cyan-900 */
-    --color-blue-800: #155e75;
-    /* Cyan-800 */
-    --color-blue-50: #f0f9ff;
+    /* Neutral Grays (for text hierarchy) */
+    --color-text-primary: #0f172a;
+    /* slate-900 - main text */
+    --color-text-secondary: #64748b;
+    /* slate-500 - secondary text */
+    --color-text-muted: #94a3b8;
+    /* slate-400 - muted text */
 
+    /* Typography */
     --font-sans: var(--font-inter), sans-serif;
     --font-serif: var(--font-playfair), serif;
 
-    --radius-xl: 12px;
-    --radius-2xl: 16px;
-    --radius-3xl: 24px;
+    /* Spacing & Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
 
-    /* Shadows: Custom Ocean Tint */
-    --shadow-ocean: 0 10px 15px -3px rgba(14, 116, 144, 0.1), 0 4px 6px -2px rgba(14, 116, 144, 0.05);
-    --shadow-blue-glow: 0 20px 40px -5px rgba(14, 116, 144, 0.3);
+    /* Shadows: Ocean-tinted */
+    --shadow-sm: 0 1px 2px 0 rgba(30, 64, 175, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(30, 64, 175, 0.1), 0 2px 4px -1px rgba(30, 64, 175, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(30, 64, 175, 0.1), 0 4px 6px -2px rgba(30, 64, 175, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
 
-    /* Glass Effect Utility - GPU Accelerated */
+    /* Glass Effect */
     --bg-glass: rgba(255, 255, 255, 0.7);
     --backdrop-glass: blur(12px);
-    --border-glass: 1px solid rgba(255, 255, 255, 0.2);
 
     --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -51,10 +65,9 @@
 @layer base {
     body {
         background-color: #ffffff;
-        color: var(--color-blue-900);
+        color: var(--color-text-primary);
         font-family: var(--font-sans);
         line-height: 1.625;
-        /* Breathing Rule: Relaxed */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -65,7 +78,7 @@
     h4,
     h5,
     h6 {
-        color: var(--color-blue-950);
+        color: var(--color-text-primary);
         font-family: var(--font-serif);
         font-weight: 700;
         letter-spacing: -0.02em;

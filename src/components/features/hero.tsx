@@ -23,7 +23,7 @@ export function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/95 via-blue-900/40 to-transparent backdrop-blur-[2px]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary/50 to-transparent backdrop-blur-[1px]" />
             </div>
 
             <div className="container mx-auto px-10 relative z-10 text-white flex-1 flex flex-col justify-center pt-40 md:pt-64 pb-32 gpu-accel">
@@ -41,24 +41,24 @@ export function Hero() {
                     } as any}
                     className="max-w-5xl"
                 >
-                    <span className="inline-block px-6 py-2.5 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-full text-[10px] font-black mb-10 text-blue-50 uppercase tracking-[0.5em] shadow-2xl">
+                    <span className="inline-block px-6 py-2.5 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full text-[10px] font-semibold mb-8 text-white uppercase tracking-widest">
                         Bộ Sưu Tập 2024
                     </span>
-                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black font-serif mb-10 leading-[0.95] tracking-tighter">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black font-serif mb-8 leading-[1.05] tracking-tighter text-white">
                         Khởi Đầu <br />
-                        <span className="text-primary-light drop-shadow-2xl">Giấc Ngủ Đế Vương</span>
+                        <span className="text-accent">Giấc Ngủ Đế Vương</span>
                     </h1>
-                    <p className="text-xl md:text-2xl text-blue-50/70 mb-16 leading-relaxed max-w-3xl font-medium">
+                    <p className="text-lg md:text-xl text-white/80 mb-12 leading-relaxed max-w-2xl">
                         Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ thượng lưu tại showroom bedding lớn nhất Bắc Ninh.
                     </p>
-                    <div className="flex flex-wrap gap-8">
+                    <div className="flex flex-wrap gap-6">
                         <motion.button
                             {...{
                                 whileHover: { scale: 1.05 },
                                 whileTap: { scale: 0.98 }
                             } as any}
                             onClick={scrollToProducts}
-                            className="h-16 px-12 bg-primary text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center space-x-3 hover:bg-primary-light transition-all shadow-blue-glow active:scale-95 group"
+                            className="h-14 px-10 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold text-sm flex items-center space-x-2 transition-all shadow-lg active:scale-95 group"
                         >
                             <span>Trải nghiệm ngay</span>
                             <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
@@ -71,7 +71,7 @@ export function Hero() {
                         >
                             <Link
                                 href="/contact"
-                                className="h-16 px-12 bg-white/5 backdrop-blur-2xl border border-white/10 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white/10 hover:border-white/30 transition-all flex items-center justify-center active:scale-95"
+                                className="h-14 px-10 bg-white/10 backdrop-blur-lg border border-white/20 text-white rounded-lg font-semibold text-sm hover:bg-white/20 hover:border-white/30 transition-all flex items-center justify-center active:scale-95"
                             >
                                 <span>Nhận tư vấn</span>
                             </Link>
