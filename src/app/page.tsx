@@ -3,12 +3,13 @@ import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/features/hero";
 import { USP } from "@/components/home/usp";
 import { ProductCard } from "@/components/features/product-card";
-import { PRODUCTS } from "@/lib/data";
+import { getFeaturedProducts } from "@/lib/sanity";
+import { Product } from "@/lib/data";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-export default function Home() {
-    const featuredProducts = PRODUCTS.slice(0, 8); // Showing 8 for the grid
+export default async function Home() {
+    const featuredProducts: Product[] = await getFeaturedProducts();
 
     return (
         <>
@@ -33,7 +34,7 @@ export default function Home() {
 
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-8">
                             {featuredProducts.map((product) => (
-                                <ProductCard key={product.id} product={product} />
+                                <ProductCard key={product._id} product={product} />
                             ))}
                         </div>
 

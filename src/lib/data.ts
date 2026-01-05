@@ -1,21 +1,25 @@
 export interface Product {
-  id: string;
+  _id: string;
   name: string;
-  slug: string;
+  slug: { current: string } | string;
   price: number;
   originalPrice?: number;
-  image: string;
-  category: "Đệm" | "Chăn Ga" | "Gối" | "Phụ Kiện";
-  status: "Còn hàng" | "Liên hệ";
+  image: any;
+  category: string;
+  status: string;
   brand: string;
-  description: string;
+  description: any;
+  specs?: string[];
 }
 
+/**
+ * @deprecated Use Sanity fetch functions from '@/lib/sanity' instead of hardcoded data.
+ */
 export const products: Product[] = [
   {
-    id: "1",
+    _id: "1",
     name: "Đệm Lò Xo King Koil",
-    slug: "dem-lo-xo-king-koil",
+    slug: { current: "dem-lo-xo-king-koil" },
     price: 12500000,
     originalPrice: 15000000,
     image: "https://placehold.co/600x400/2563EB/FFFFFF/png?text=Dem+Lo+Xo",
@@ -25,9 +29,9 @@ export const products: Product[] = [
     description: "Đệm lò xo túi độc lập cao cấp, nâng đỡ cột sống tối ưu.",
   },
   {
-    id: "2",
+    _id: "2",
     name: "Bộ Chăn Ga Cotton",
-    slug: "bo-chan-ga-cotton",
+    slug: { current: "bo-chan-ga-cotton" },
     price: 3200000,
     image: "https://placehold.co/600x400/06B6D4/FFFFFF/png?text=Chan+Ga+Cotton",
     category: "Chăn Ga",
@@ -36,9 +40,9 @@ export const products: Product[] = [
     description: "Chất liệu cotton lụa mềm mại, thoáng mát, không phai màu.",
   },
   {
-    id: "3",
+    _id: "3",
     name: "Gối Lông Vũ 5 Sao",
-    slug: "goi-long-vu-5-sao",
+    slug: { current: "goi-long-vu-5-sao" },
     price: 450000,
     image: "https://placehold.co/600x400/64748B/FFFFFF/png?text=Goi+Long+Vu",
     category: "Gối",
@@ -47,9 +51,9 @@ export const products: Product[] = [
     description: "Ruột gối lông vũ nhân tạo, êm ái, chống xẹp lún.",
   },
   {
-    id: "4",
+    _id: "4",
     name: "Đệm Bông Ép Everon",
-    slug: "dem-bong-ep-everon",
+    slug: { current: "dem-bong-ep-everon" },
     price: 2800000,
     image: "https://placehold.co/600x400/2563EB/FFFFFF/png?text=Dem+Bong+Ep",
     category: "Đệm",
@@ -58,9 +62,9 @@ export const products: Product[] = [
     description: "Đệm bông ép kháng khuẩn, độ cứng vừa phải, tốt cho người đau lưng.",
   },
   {
-    id: "5",
+    _id: "5",
     name: "Bộ Ga Gối Tencel",
-    slug: "bo-ga-goi-tencel",
+    slug: { current: "bo-ga-goi-tencel" },
     price: 4500000,
     image: "https://placehold.co/600x400/06B6D4/FFFFFF/png?text=Ga+Goi+Tencel",
     category: "Chăn Ga",
@@ -69,9 +73,9 @@ export const products: Product[] = [
     description: "Vải Tencel sinh học, mát lạnh ngay khi chạm vào.",
   },
   {
-    id: "6",
+    _id: "6",
     name: "Topper Làm Mềm Đệm",
-    slug: "topper-lam-mem-dem",
+    slug: { current: "topper-lam-mem-dem" },
     price: 1200000,
     image: "https://placehold.co/600x400/64748B/FFFFFF/png?text=Topper+Dem",
     category: "Phụ Kiện",
@@ -80,9 +84,9 @@ export const products: Product[] = [
     description: "Biến đệm cứng thành đệm khách sạn 5 sao trong tích tắc.",
   },
   {
-    id: "7",
+    _id: "7",
     name: "Chăn Mùa Hè",
-    slug: "chan-mua-he",
+    slug: { current: "chan-mua-he" },
     price: 850000,
     image: "https://placehold.co/600x400/06B6D4/FFFFFF/png?text=Chan+Mua+He",
     category: "Chăn Ga",
@@ -91,9 +95,9 @@ export const products: Product[] = [
     description: "Chăn trần bông mỏng, thích hợp cho phòng điều hòa.",
   },
   {
-    id: "8",
+    _id: "8",
     name: "Gối Tựa Sofa",
-    slug: "goi-tua-sofa",
+    slug: { current: "goi-tua-sofa" },
     price: 150000,
     image: "https://placehold.co/600x400/64748B/FFFFFF/png?text=Goi+Tua",
     category: "Gối",

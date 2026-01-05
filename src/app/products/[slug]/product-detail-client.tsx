@@ -10,6 +10,8 @@ import { formatVND, cn } from "@/lib/utils";
 import { Phone, MessageSquare, ChevronLeft, CheckCircle2, Star, Truck, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { ProductCard } from "@/components/features/product-card";
+import { urlFor } from "@/lib/sanity";
+import { PortableText } from "@portabletext/react";
 
 interface ProductDetailClientProps {
     product: Product;
@@ -17,6 +19,8 @@ interface ProductDetailClientProps {
 }
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
+    const imageUrl = typeof product.image === 'string' ? product.image : urlFor(product.image).url();
+
     return (
         <>
             <Navbar />
@@ -29,14 +33,16 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                     </Link>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-24">
-                        {/* Image Gallery - Enhanced for mobile scroll snap */}
+                        {/* Image Gallery */}
                         <div className="space-y-6">
                             <div className="flex lg:block overflow-x-auto snap-x snap-mandatory scrollbar-hide lg:overflow-visible no-scrollbar">
-                                {[product.image, product.image, product.image].map((img, i) => (
+                                {[imageUrl, imageUrl, imageUrl].map((img, i) => (
                                     <motion.div
                                         key={i}
-                                        initial={i === 0 ? { opacity: 0, scale: 0.95 } : {}}
-                                        animate={i === 0 ? { opacity: 1, scale: 1 } : {}}
+                                        {...{
+                                            initial: i === 0 ? { opacity: 0, scale: 0.95 } : undefined,
+                                            animate: i === 0 ? { opacity: 1, scale: 1 } : undefined
+                                        } as any}
                                         className="relative aspect-square w-full shrink-0 rounded-[2.5rem] overflow-hidden bg-slate-50 border border-slate-100 snap-start lg:mb-6"
                                     >
                                         <Image
@@ -50,9 +56,9 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                                 ))}
                             </div>
 
-                            {/* Thumbnails (Visible on desktop) */}
+                            {/* Thumbnails */}
                             <div className="hidden lg:grid grid-cols-3 gap-4">
-                                {[product.image, product.image, product.image].map((img, i) => (
+                                {[imageUrl, imageUrl, imageUrl].map((img, i) => (
                                     <div key={i} className={cn(
                                         "relative aspect-square rounded-2xl overflow-hidden border-2 cursor-pointer transition-all",
                                         i === 0 ? "border-blue-600" : "border-transparent hover:border-blue-200"
@@ -66,9 +72,11 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                         {/* Product Info */}
                         <div className="flex flex-col justify-center">
                             <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
+                                {...{
+                                    initial: { opacity: 0, y: 20 },
+                                    animate: { opacity: 1, y: 0 },
+                                    transition: { delay: 0.2 }
+                                } as any}
                             >
                                 <div className="flex items-center space-x-4 mb-6">
                                     <span className="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-bold uppercase tracking-widest">
@@ -88,9 +96,9 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                                     <p className="text-4xl font-bold text-blue-600">
                                         {product.price === 0 ? "Liên hệ báo giá" : formatVND(product.price)}
                                     </p>
-                                    {product.price > 0 && (
+                                    {product.price > 0 && product.originalPrice && (
                                         <p className="text-xl text-slate-300 line-through font-medium">
-                                            {formatVND(product.price * 1.2)}
+                                            {formatVND(product.originalPrice)}
                                         </p>
                                     )}
                                 </div>
@@ -100,24 +108,35 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                                         <CheckCircle2 size={24} />
                                         <span>{product.status} tại Showroom Bắc Ninh</span>
                                     </div>
-                                    <p className="text-lg text-slate-600 leading-relaxed">
-                                        {product.description}
-                                    </p>
+                                    <div className="text-lg text-slate-600 leading-relaxed prose prose-slate max-w-none">
+                                        {Array.isArray(product.description) ? (
+                                            <PortableText value={product.description} />
+                                        ) : (
+                                            product.description
+                                        )}
+                                    </div>
                                 </div>
 
                                 {/* Specs/Features */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-                                    {[
-                                        { icon: <Truck size={20} />, text: "Giao hàng nhanh" },
-                                        { icon: <ShieldCheck size={20} />, text: "Bảo hành 10 năm" },
-                                        { icon: <Star size={20} />, text: "Chất liệu cao cấp" },
-                                        { icon: <Star size={20} />, text: "Kháng khuẩn 99%" },
-                                    ].map((feat, i) => (
-                                        <div key={i} className="flex items-center space-x-3 text-slate-700 font-medium p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                                            <div className="text-blue-600">{feat.icon}</div>
-                                            <span>{feat.text}</span>
-                                        </div>
-                                    ))}
+                                    {product.specs ? (
+                                        product.specs.map((spec, i) => (
+                                            <div key={i} className="flex items-center space-x-3 text-slate-700 font-medium p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                                <CheckCircle2 size={20} className="text-blue-600" />
+                                                <span>{spec}</span>
+                                            </div>
+                                        ))
+                                    ) : (
+                                        [
+                                            { icon: <Truck size={20} />, text: "Giao hàng nhanh" },
+                                            { icon: <ShieldCheck size={20} />, text: "Bảo hành 10 năm" },
+                                        ].map((feat, i) => (
+                                            <div key={i} className="flex items-center space-x-3 text-slate-700 font-medium p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                                                <div className="text-blue-600">{feat.icon}</div>
+                                                <span>{feat.text}</span>
+                                            </div>
+                                        ))
+                                    )}
                                 </div>
 
                                 {/* Desktop CTAs */}
@@ -151,7 +170,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                         </div>
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                             {relatedProducts.map((p) => (
-                                <ProductCard key={p.id} product={p} />
+                                <ProductCard key={p._id} product={p} />
                             ))}
                         </div>
                     </section>
@@ -160,8 +179,10 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                 {/* Sticky Mobile Bar (Mobile only) - Adding pb-safe logic */}
                 <div className="sm:hidden fixed bottom-0 left-0 right-0 z-50 p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] bg-gradient-to-t from-white via-white/80 to-transparent">
                     <motion.div
-                        initial={{ y: 100 }}
-                        animate={{ y: 0 }}
+                        {...{
+                            initial: { y: 100 },
+                            animate: { y: 0 }
+                        } as any}
                         className="bg-white/80 backdrop-blur-xl border border-white/50 shadow-2xl rounded-[2rem] p-4 flex gap-3"
                     >
                         <a

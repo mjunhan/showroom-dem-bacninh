@@ -1,16 +1,16 @@
 import { Metadata } from "next";
-import { PRODUCTS } from "@/lib/data";
 import { notFound } from "next/navigation";
 import ProductDetailClient from "./product-detail-client";
 import { formatVND } from "@/lib/utils";
+import { getProductBySlug, getFeaturedProducts } from "@/lib/sanity";
 
 interface PageProps {
-    params: Promise<{ id: string }>;
+    params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-    const { id } = await params;
-    const product = PRODUCTS.find((p) => p.slug === id);
+    const { slug } = await params;
+    const product = await getProductBySlug(slug);
 
     if (!product) {
         return {
@@ -42,16 +42,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
-    const { id } = await params;
-    const product = PRODUCTS.find((p) => p.slug === id);
+    const { slug } = await params;
+    const product = await getProductBySlug(slug);
 
     if (!product) {
         notFound();
     }
 
-    const relatedProducts = PRODUCTS.filter((p) => p.id !== product.id)
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 4);
+    // For related products, we can just fetch featured ones for now
+    const relatedProducts = await getFeaturedProducts();
 
     return <ProductDetailClient product={product} relatedProducts={relatedProducts} />;
 }

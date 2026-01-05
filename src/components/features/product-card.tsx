@@ -8,6 +8,7 @@ import { Phone, MessageSquare, ImageIcon } from "lucide-react";
 import { Product } from "@/lib/data";
 import { formatVND, cn } from "@/lib/utils";
 import { STORE_INFO } from "@/lib/data";
+import { urlFor } from "@/lib/sanity";
 
 interface ProductCardProps {
     product: Product;
@@ -16,16 +17,24 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
     const [hasError, setHasError] = useState(false);
 
+    // Support both Sanity slug object and legacy string slug
+    const slug = typeof product.slug === 'string' ? product.slug : product.slug.current;
+
+    // Support both Sanity image object and legacy string URL
+    const imageUrl = typeof product.image === 'string'
+        ? product.image
+        : urlFor(product.image).url();
+
     return (
         <motion.div
             whileHover={{ y: -4, scale: 1.02 }}
             transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             className="bg-white rounded-2xl overflow-hidden border border-slate-100/60 group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
         >
-            <Link href={`/products/${product.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
+            <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
                     <Image
-                        src={product.image}
+                        src={imageUrl}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
@@ -49,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
             <div className="p-6">
                 <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-[0.2em]">{product.category}</p>
-                <Link href={`/products/${product.slug}`}>
+                <Link href={`/products/${slug}`}>
                     <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-1 leading-tight">
                         {product.name}
                     </h3>
