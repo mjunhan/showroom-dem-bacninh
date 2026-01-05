@@ -25,8 +25,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="vi">
-            <body className={`${inter.variable} ${playfair.variable} antialiased`}>
-                {children}
+            <body className={`${inter.variable} ${playfair.variable} antialiased selection:bg-primary/20`}>
+                <div className="min-h-screen bg-gradient-to-b from-slate-50 to-blue-50/50">
+                    {children}
+                </div>
             </body>
         </html>
     );

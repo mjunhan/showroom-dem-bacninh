@@ -14,7 +14,7 @@ export function Hero() {
     };
 
     return (
-        <section className="relative min-h-[80vh] w-full overflow-hidden flex flex-col">
+        <section className="relative min-h-screen w-full overflow-hidden flex flex-col">
             <div className="absolute inset-0 z-0">
                 <Image
                     src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
@@ -23,42 +23,59 @@ export function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/60 to-blue-600/30 backdrop-blur-[1px]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/95 via-blue-900/40 to-transparent backdrop-blur-[2px]" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 text-white flex-1 flex flex-col justify-center pt-32 md:pt-48 pb-20">
+            <div className="container mx-auto px-10 relative z-10 text-white flex-1 flex flex-col justify-center pt-40 md:pt-64 pb-32 gpu-accel">
                 <motion.div
                     {...{
-                        initial: { opacity: 0, y: 30 },
+                        initial: { opacity: 0, y: 60 },
                         animate: { opacity: 1, y: 0 },
-                        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                        transition: {
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 20,
+                            mass: 1,
+                            duration: 0.8
+                        }
                     } as any}
-                    className="max-w-4xl"
+                    className="max-w-5xl"
                 >
-                    <span className="inline-block px-5 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-[10px] font-black mb-8 text-blue-50 uppercase tracking-[0.4em]">
-                        Chăn Ga Gối Đệm Cao Cấp
+                    <span className="inline-block px-6 py-2.5 bg-white/10 backdrop-blur-2xl border border-white/20 rounded-full text-[10px] font-black mb-10 text-blue-50 uppercase tracking-[0.5em] shadow-2xl">
+                        Bộ Sưu Tập 2024
                     </span>
-                    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black font-serif mb-8 leading-[1.1] tracking-tighter">
-                        Kiến Tạo Không Gian <br />
-                        <span className="text-primary-light drop-shadow-sm">Sống Đẳng Cấp</span>
+                    <h1 className="text-5xl md:text-8xl lg:text-9xl font-black font-serif mb-10 leading-[0.95] tracking-tighter">
+                        Khởi Đầu <br />
+                        <span className="text-primary-light drop-shadow-2xl">Giấc Ngủ Đế Vương</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-blue-50/80 mb-12 leading-relaxed max-w-2xl font-medium">
-                        Đại lý chăn ga gối đệm chính hãng số 1 Bắc Ninh. Nơi khơi gợi nguồn cảm hứng cho những giấc ngủ say và sự sang trọng tuyệt đỉnh.
+                    <p className="text-xl md:text-2xl text-blue-50/70 mb-16 leading-relaxed max-w-3xl font-medium">
+                        Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ thượng lưu tại showroom bedding lớn nhất Bắc Ninh.
                     </p>
-                    <div className="flex flex-wrap gap-5">
-                        <button
+                    <div className="flex flex-wrap gap-8">
+                        <motion.button
+                            {...{
+                                whileHover: { scale: 1.05 },
+                                whileTap: { scale: 0.98 }
+                            } as any}
                             onClick={scrollToProducts}
-                            className="h-14 px-10 bg-primary text-white rounded-2xl font-bold flex items-center space-x-2 hover:bg-primary-light transition-all shadow-[0_20px_40px_rgba(2,132,199,0.4)] active:scale-95 group"
+                            className="h-16 px-12 bg-primary text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center space-x-3 hover:bg-primary-light transition-all shadow-blue-glow active:scale-95 group"
                         >
-                            <span className="tracking-wide">Khám phá ngay</span>
-                            <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <Link
-                            href="/contact"
-                            className="h-14 px-10 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 hover:border-white/40 transition-all flex items-center justify-center active:scale-95"
+                            <span>Trải nghiệm ngay</span>
+                            <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                        </motion.button>
+                        <motion.div
+                            {...{
+                                whileHover: { scale: 1.05 },
+                                whileTap: { scale: 0.98 }
+                            } as any}
                         >
-                            <span className="tracking-wide">Liên Hệ Tư Vấn</span>
-                        </Link>
+                            <Link
+                                href="/contact"
+                                className="h-16 px-12 bg-white/5 backdrop-blur-2xl border border-white/10 text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white/10 hover:border-white/30 transition-all flex items-center justify-center active:scale-95"
+                            >
+                                <span>Nhận tư vấn</span>
+                            </Link>
+                        </motion.div>
                     </div>
                 </motion.div>
             </div>

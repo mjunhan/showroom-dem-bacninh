@@ -29,15 +29,15 @@ export function Navbar() {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-600 px-8 py-6 gpu-accel",
                 scrolled
-                    ? "bg-white/80 backdrop-blur-md shadow-sm py-3"
-                    : "bg-transparent"
+                    ? "bg-white/70 backdrop-blur-md border-b border-white/20 shadow-ocean py-4"
+                    : "bg-transparent backdrop-blur-0"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <Link href="/" className="flex items-center space-x-2">
-                    <span className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary">
+                <Link href="/" className="flex items-center space-x-2 group">
+                    <span className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary transition-transform group-hover:scale-105">
                         Showroom <span className="text-blue-950">Bedding</span>
                     </span>
                 </Link>
@@ -48,17 +48,17 @@ export function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors"
+                            className="text-[11px] font-black uppercase tracking-[0.2em] text-blue-900/60 hover:text-primary transition-all hover:tracking-[0.25em]"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary-light transition-all shadow-xl shadow-primary/20 active:scale-95"
+                        className="flex items-center space-x-2 bg-primary text-white px-8 py-3.5 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-primary-light transition-all shadow-blue-glow active:scale-95"
                     >
-                        <Phone size={16} />
-                        <span className="tracking-wide">Gọi ngay</span>
+                        <Phone size={14} />
+                        <span>Gọi ngay</span>
                     </a>
                 </div>
 

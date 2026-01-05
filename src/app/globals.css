@@ -1,42 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-    /* Strong Ocean Blue Palette */
-    --color-primary: #0284c7;
-    /* vibrant sky blue */
-    --color-primary-light: #0ea5e9;
+    /* Grand Design: Ocean Luxury Palette */
+    --color-primary: #0e7490;
+    /* Cyan-700: Deep Ocean */
+    --color-primary-light: #0891b2;
+    /* Cyan-600 */
     --color-secondary: #f0f9ff;
-    /* foam white */
-    --color-accent: #0369a1;
-    /* deep marine blue */
-    --color-accent-soft: #e0f2fe;
-    /* soft ocean tint */
+    /* Blue-50: Foam White */
+    --color-accent: #f59e0b;
+    /* Amber-500: Subtle Gold */
+    --color-accent-soft: #fef3c7;
+    /* Amber-100 */
 
-    --color-blue-950: #082f49;
-    --color-blue-900: #0c4a6e;
-    --color-blue-800: #075985;
+    --color-blue-950: #083344;
+    /* Cyan-950 */
+    --color-blue-900: #164e63;
+    /* Cyan-900 */
+    --color-blue-800: #155e75;
+    /* Cyan-800 */
     --color-blue-50: #f0f9ff;
 
     --font-sans: var(--font-inter), sans-serif;
     --font-serif: var(--font-playfair), serif;
 
-    --radius-xl: 1rem;
-    --radius-2xl: 1.5rem;
-    --radius-3xl: 2.25rem;
+    --radius-xl: 12px;
+    --radius-2xl: 16px;
+    --radius-3xl: 24px;
 
-    /* Shadows & Glows */
-    --shadow-blue-glow: 0 10px 15px -3px rgba(2, 132, 199, 0.3), 0 4px 6px -2px rgba(2, 132, 199, 0.1);
+    /* Shadows: Custom Ocean Tint */
+    --shadow-ocean: 0 10px 15px -3px rgba(14, 116, 144, 0.1), 0 4px 6px -2px rgba(14, 116, 144, 0.05);
+    --shadow-blue-glow: 0 20px 40px -5px rgba(14, 116, 144, 0.3);
 
-    /* Buttery Soft Transitions */
+    /* Glass Effect Utility - GPU Accelerated */
+    --bg-glass: rgba(255, 255, 255, 0.7);
+    --backdrop-glass: blur(12px);
+    --border-glass: 1px solid rgba(255, 255, 255, 0.2);
+
     --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer utilities {
+    .gpu-accel {
+        will-change: transform, opacity;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+    }
 }
 
 @layer base {
     body {
-        background-color: #f8fafc;
+        background-color: #ffffff;
         color: var(--color-blue-900);
         font-family: var(--font-sans);
-        line-height: 1.8;
+        line-height: 1.625;
+        /* Breathing Rule: Relaxed */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -50,6 +68,6 @@
         color: var(--color-blue-950);
         font-family: var(--font-serif);
         font-weight: 700;
-        letter-spacing: -0.012em;
+        letter-spacing: -0.02em;
     }
 }
