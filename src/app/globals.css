@@ -1,20 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #2563eb;
-    /* blue-600 */
-    --color-secondary: #f8fafc;
-    /* slate-50 */
-    --color-accent: #06b6d4;
-    /* cyan-500 */
+    /* Sophisticated Ocean Blue Palette */
+    --color-primary: #1e3a8a;
+    /* deep blue */
+    --color-primary-light: #3b82f6;
+    --color-secondary: #fdfcfb;
+    /* warming off-white background */
+    --color-accent: #0ea5e9;
+    /* vibrant sky blue */
+    --color-accent-soft: #f0f9ff;
+    /* soft blue tint */
+
     --color-slate-900: #0f172a;
+    --color-slate-800: #1e293b;
     --color-slate-600: #475569;
+    --color-slate-500: #64748b;
+    --color-slate-400: #94a3b8;
 
     --font-sans: var(--font-be-vietnam-pro), sans-serif;
     --font-serif: var(--font-be-vietnam-pro), serif;
     --font-playfair: var(--font-be-vietnam-pro), serif;
 
-    --radius-xl: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.25rem;
+
+    /* Buttery Soft Transitions */
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @layer base {
@@ -22,6 +34,9 @@
         background-color: var(--color-secondary);
         color: var(--color-slate-600);
         font-family: var(--font-sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     h1,
@@ -33,5 +48,6 @@
         color: var(--color-slate-900);
         font-family: var(--font-sans);
         font-weight: 700;
+        letter-spacing: -0.02em;
     }
 }

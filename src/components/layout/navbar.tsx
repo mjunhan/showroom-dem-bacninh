@@ -37,28 +37,28 @@ export function Navbar() {
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <Link href="/" className="flex items-center space-x-2">
-                    <span className="text-2xl font-bold font-playfair text-primary">
+                    <span className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary">
                         Showroom <span className="text-slate-900">Bedding</span>
                     </span>
                 </Link>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden md:flex items-center space-x-10">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-slate-600 hover:text-primary transition-colors"
+                            className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="flex items-center space-x-2 bg-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-primary/90 transition-all shadow-md active:scale-95"
+                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-xl text-sm font-bold hover:bg-primary-light transition-all shadow-xl shadow-primary/20 active:scale-95"
                     >
                         <Phone size={16} />
-                        <span>Gọi ngay</span>
+                        <span className="tracking-wide">Gọi ngay</span>
                     </a>
                 </div>
 

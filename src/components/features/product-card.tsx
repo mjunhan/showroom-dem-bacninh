@@ -18,29 +18,29 @@ export function ProductCard({ product }: ProductCardProps) {
 
     return (
         <motion.div
-            whileHover={{ y: -10, scale: 1.05, boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)" }}
-            transition={{ type: "spring", stiffness: 300 }}
-            className="bg-white rounded-xl overflow-hidden border border-slate-100 group transition-all"
+            whileHover={{ y: -4, scale: 1.02 }}
+            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            className="bg-white rounded-2xl overflow-hidden border border-slate-100/60 group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
         >
-            <Link href={`/products/${product.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-100">
+            <Link href={`/products/${product.slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
                     <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        className="object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
                         onError={() => setHasError(true)}
                     />
                 ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                        <ImageIcon size={48} className="text-slate-300 mb-4" />
-                        <span className="text-slate-400 font-medium text-sm line-clamp-2">{product.name}</span>
+                        <ImageIcon size={40} className="text-slate-200 mb-4" />
+                        <span className="text-slate-400 font-medium text-xs line-clamp-2">{product.name}</span>
                     </div>
                 )}
                 <div className="absolute top-4 left-4">
                     <span className={cn(
-                        "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
-                        product.status === "Còn hàng" ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-600"
+                        "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md",
+                        product.status === "Còn hàng" ? "bg-green-500/10 text-green-700 border border-green-200/50" : "bg-slate-500/10 text-slate-600 border border-slate-200/50"
                     )}>
                         {product.status}
                     </span>
@@ -48,38 +48,38 @@ export function ProductCard({ product }: ProductCardProps) {
             </Link>
 
             <div className="p-6">
-                <p className="text-xs font-semibold text-blue-600 mb-2 uppercase tracking-widest">{product.category}</p>
+                <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-[0.2em]">{product.category}</p>
                 <Link href={`/products/${product.slug}`}>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-1">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-1 leading-tight">
                         {product.name}
                     </h3>
                 </Link>
                 <div className="flex flex-col items-start gap-1 mb-6">
-                    <p className="text-lg font-bold text-blue-700 leading-none">
+                    <p className="text-xl font-extrabold text-primary leading-none">
                         {product.price === 0 ? "Liên hệ báo giá" : formatVND(product.price)}
                     </p>
-                    <span className="text-xs text-gray-500 font-medium">{product.brand}</span>
+                    <span className="text-[11px] text-slate-400 font-medium tracking-wide uppercase">{product.brand}</span>
                 </div>
 
-                <div className="flex flex-col gap-2 mt-3 w-full">
+                <div className="flex flex-col gap-3 mt-auto w-full">
                     {/* Button 1: Zalo */}
                     <a
                         href={STORE_INFO.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow-md transition-all h-9 flex items-center justify-center gap-2 rounded-xl"
+                        className="w-full bg-primary hover:bg-primary-light text-white shadow-sm hover:shadow-lg transition-all h-11 flex items-center justify-center gap-2 rounded-xl active:scale-95"
                     >
                         <MessageSquare className="w-4 h-4 shrink-0" />
-                        <span className="text-xs font-medium">Tư vấn Zalo</span>
+                        <span className="text-sm font-semibold tracking-wide">Tư vấn Zalo</span>
                     </a>
 
                     {/* Button 2: Call */}
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="w-full border border-blue-200 text-blue-700 hover:bg-blue-50 hover:text-blue-800 transition-all h-9 flex items-center justify-center gap-2 rounded-xl"
+                        className="w-full border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-primary/30 hover:text-primary transition-all h-11 flex items-center justify-center gap-2 rounded-xl active:scale-95"
                     >
                         <Phone className="w-4 h-4 shrink-0" />
-                        <span className="text-xs font-medium">Gọi ngay</span>
+                        <span className="text-sm font-semibold tracking-wide">Gọi ngay</span>
                     </a>
                 </div>
             </div>

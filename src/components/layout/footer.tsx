@@ -8,10 +8,10 @@ export function Footer() {
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
                 {/* Brand */}
                 <div className="col-span-1 md:col-span-2">
-                    <h2 className="text-2xl font-bold font-playfair text-white mb-6">
+                    <h2 className="text-2xl font-black font-sans tracking-tight text-white mb-6">
                         Showroom <span className="text-primary">Bedding</span>
                     </h2>
-                    <p className="max-w-md mb-8 leading-relaxed">
+                    <p className="max-w-md mb-8 leading-relaxed text-slate-500 font-medium">
                         Chuyên cung cấp các sản phẩm chăn ga gối đệm chính hãng tại Bắc Ninh.
                         Cam kết chất lượng, giá tốt tại kho, bảo hành dài hạn.
                     </p>
