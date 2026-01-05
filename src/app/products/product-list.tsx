@@ -110,11 +110,13 @@ export function ProductList({ products }: ProductListProps) {
                             {filteredProducts.map((product) => (
                                 <motion.div
                                     key={product._id}
-                                    layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.3 }}
+                                    {...{
+                                        layout: true,
+                                        initial: { opacity: 0, scale: 0.9 },
+                                        animate: { opacity: 1, scale: 1 },
+                                        exit: { opacity: 0, scale: 0.9 },
+                                        transition: { duration: 0.3 }
+                                    } as any}
                                 >
                                     <ProductCard product={product} />
                                 </motion.div>
@@ -123,8 +125,10 @@ export function ProductList({ products }: ProductListProps) {
                     </div>
                 ) : (
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        {...{
+                            initial: { opacity: 0, y: 20 },
+                            animate: { opacity: 1, y: 0 }
+                        } as any}
                         className="bg-white rounded-[2.5rem] p-20 text-center border border-dashed border-slate-200"
                     >
                         <p className="text-2xl font-bold text-slate-900 mb-2">Không tìm thấy sản phẩm</p>
@@ -147,17 +151,21 @@ export function ProductList({ products }: ProductListProps) {
                 {isMobileFilterOpen && (
                     <>
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
+                            {...{
+                                initial: { opacity: 0 },
+                                animate: { opacity: 1 },
+                                exit: { opacity: 0 }
+                            } as any}
                             onClick={() => setIsMobileFilterOpen(false)}
                             className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100]"
                         />
                         <motion.div
-                            initial={{ y: "100%" }}
-                            animate={{ y: 0 }}
-                            exit={{ y: "100%" }}
-                            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                            {...{
+                                initial: { y: "100%" },
+                                animate: { y: 0 },
+                                exit: { y: "100%" },
+                                transition: { type: "spring", damping: 25, stiffness: 200 }
+                            } as any}
                             className="fixed bottom-0 left-0 right-0 bg-white z-[110] rounded-t-[2.5rem] p-8 max-h-[90vh] overflow-y-auto"
                         >
                             <div className="flex items-center justify-between mb-8">

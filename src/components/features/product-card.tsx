@@ -27,8 +27,10 @@ export function ProductCard({ product }: ProductCardProps) {
 
     return (
         <motion.div
-            whileHover={{ y: -4, scale: 1.02 }}
-            transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            {...{
+                whileHover: { y: -4, scale: 1.02 },
+                transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
+            } as any}
             className="bg-white rounded-2xl overflow-hidden border border-slate-100/60 group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">

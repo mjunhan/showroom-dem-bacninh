@@ -75,9 +75,11 @@ export function Navbar() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
+                        {...{
+                            initial: { opacity: 0, height: 0 },
+                            animate: { opacity: 1, height: "auto" },
+                            exit: { opacity: 0, height: 0 }
+                        } as any}
                         className="md:hidden bg-white mt-4 rounded-2xl shadow-xl overflow-hidden"
                     >
                         <div className="flex flex-col p-6 space-y-4">

@@ -28,9 +28,11 @@ export function Hero() {
 
             <div className="container mx-auto px-6 relative z-10 text-white">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    {...{
+                        initial: { opacity: 0, y: 30 },
+                        animate: { opacity: 1, y: 0 },
+                        transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+                    } as any}
                     className="max-w-4xl"
                 >
                     <span className="inline-block px-5 py-2 bg-primary/20 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold mb-8 text-primary-light uppercase tracking-[0.3em]">
@@ -63,8 +65,10 @@ export function Hero() {
 
             {/* Floaty Decorations */}
             <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                {...{
+                    animate: { y: [0, -20, 0] },
+                    transition: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                } as any}
                 className="absolute top-1/4 right-1/4 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl hidden md:block"
             />
         </section>
