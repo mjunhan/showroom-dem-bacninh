@@ -20,10 +20,10 @@ export function Hero() {
                     src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
                     alt="Bedding Hero"
                     fill
-                    className="object-cover opacity-80"
+                    className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-[1px]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/60 to-blue-600/30 backdrop-blur-[1px]" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 text-white flex-1 flex flex-col justify-center pt-32 md:pt-48 pb-20">
@@ -35,27 +35,27 @@ export function Hero() {
                     } as any}
                     className="max-w-4xl"
                 >
-                    <span className="inline-block px-5 py-2 bg-primary/20 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold mb-8 text-primary-light uppercase tracking-[0.3em]">
+                    <span className="inline-block px-5 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-[10px] font-black mb-8 text-blue-50 uppercase tracking-[0.4em]">
                         Chăn Ga Gối Đệm Cao Cấp
                     </span>
-                    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black font-sans mb-8 leading-[1.1] tracking-tight line-clamp-3">
+                    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black font-serif mb-8 leading-[1.1] tracking-tighter">
                         Kiến Tạo Không Gian <br />
-                        <span className="text-primary-light">Sống Đẳng Cấp</span>
+                        <span className="text-primary-light drop-shadow-sm">Sống Đẳng Cấp</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-medium line-clamp-4">
+                    <p className="text-lg md:text-xl text-blue-50/80 mb-12 leading-relaxed max-w-2xl font-medium">
                         Đại lý chăn ga gối đệm chính hãng số 1 Bắc Ninh. Nơi khơi gợi nguồn cảm hứng cho những giấc ngủ say và sự sang trọng tuyệt đỉnh.
                     </p>
                     <div className="flex flex-wrap gap-5">
                         <button
                             onClick={scrollToProducts}
-                            className="h-14 px-10 bg-primary text-white rounded-2xl font-bold flex items-center space-x-2 hover:bg-primary-light transition-all shadow-2xl shadow-primary/40 active:scale-95 group"
+                            className="h-14 px-10 bg-primary text-white rounded-2xl font-bold flex items-center space-x-2 hover:bg-primary-light transition-all shadow-[0_20px_40px_rgba(2,132,199,0.4)] active:scale-95 group"
                         >
                             <span className="tracking-wide">Khám phá ngay</span>
                             <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                         <Link
                             href="/contact"
-                            className="h-14 px-10 bg-white/5 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold hover:bg-white/10 hover:border-white/30 transition-all flex items-center justify-center active:scale-95"
+                            className="h-14 px-10 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-2xl font-bold hover:bg-white/20 hover:border-white/40 transition-all flex items-center justify-center active:scale-95"
                         >
                             <span className="tracking-wide">Liên Hệ Tư Vấn</span>
                         </Link>

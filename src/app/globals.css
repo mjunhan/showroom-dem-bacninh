@@ -1,30 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-    /* Sophisticated & Calming Palette */
-    --color-primary: #334155;
-    /* soft slate blue */
-    --color-primary-light: #475569;
-    --color-secondary: #f8fafc;
-    /* muted off-white background */
-    --color-accent: #64748b;
-    /* neutral slate */
-    --color-accent-soft: #f1f5f9;
-    /* very soft slate tint */
+    /* Strong Ocean Blue Palette */
+    --color-primary: #0284c7;
+    /* vibrant sky blue */
+    --color-primary-light: #0ea5e9;
+    --color-secondary: #f0f9ff;
+    /* foam white */
+    --color-accent: #0369a1;
+    /* deep marine blue */
+    --color-accent-soft: #e0f2fe;
+    /* soft ocean tint */
 
-    --color-slate-900: #0f172a;
-    --color-slate-800: #1e293b;
-    --color-slate-600: #475569;
-    --color-slate-500: #64748b;
-    --color-slate-400: #94a3b8;
-    --color-slate-100: #f1f5f9;
+    --color-blue-950: #082f49;
+    --color-blue-900: #0c4a6e;
+    --color-blue-800: #075985;
+    --color-blue-50: #f0f9ff;
 
     --font-sans: var(--font-inter), sans-serif;
     --font-serif: var(--font-playfair), serif;
 
     --radius-xl: 1rem;
     --radius-2xl: 1.5rem;
-    --radius-3xl: 2rem;
+    --radius-3xl: 2.25rem;
+
+    /* Shadows & Glows */
+    --shadow-blue-glow: 0 10px 15px -3px rgba(2, 132, 199, 0.3), 0 4px 6px -2px rgba(2, 132, 199, 0.1);
 
     /* Buttery Soft Transitions */
     --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -32,11 +33,10 @@
 
 @layer base {
     body {
-        background-color: var(--color-secondary);
-        color: var(--color-slate-600);
+        background-color: #f8fafc;
+        color: var(--color-blue-900);
         font-family: var(--font-sans);
         line-height: 1.8;
-        /* increased for readability */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -47,10 +47,9 @@
     h4,
     h5,
     h6 {
-        color: var(--color-slate-900);
+        color: var(--color-blue-950);
         font-family: var(--font-serif);
-        font-weight: 600;
-        /* slightly softer than bold */
-        letter-spacing: -0.01em;
+        font-weight: 700;
+        letter-spacing: -0.012em;
     }
 }

@@ -28,10 +28,10 @@ export function ProductCard({ product }: ProductCardProps) {
     return (
         <motion.div
             {...{
-                whileHover: { y: -4, scale: 1.01 },
-                transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
+                whileHover: { y: -8, scale: 1.01 },
+                transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
             } as any}
-            className="bg-white rounded-3xl overflow-hidden border border-slate-100/80 group transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.03)] h-full flex flex-col"
+            className="bg-white/70 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/40 group transition-all duration-500 hover:shadow-[0_40px_80px_rgba(2,132,199,0.08)] h-full flex flex-col relative"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
@@ -59,17 +59,17 @@ export function ProductCard({ product }: ProductCardProps) {
             </Link>
 
             <div className="p-6">
-                <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-[0.2em]">{product.category}</p>
+                <p className="text-[10px] font-black text-primary mb-3 uppercase tracking-[0.25em]">{product.category}</p>
                 <Link href={`/products/${slug}`}>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug min-h-[3rem]">
+                    <h3 className="text-xl font-bold text-blue-950 mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-snug min-h-[3.5rem] font-serif">
                         {product.name}
                     </h3>
                 </Link>
-                <div className="flex flex-col items-start gap-1 mb-6 mt-2">
-                    <p className="text-2xl font-bold text-primary leading-none tracking-tight">
+                <div className="flex flex-col items-start gap-1 mb-8">
+                    <p className="text-2xl font-black text-primary leading-none tracking-tight">
                         {product.price === 0 ? "Liên hệ báo giá" : formatVND(product.price)}
                     </p>
-                    <span className="text-[11px] text-slate-400 font-medium tracking-wide uppercase">{product.brand}</span>
+                    <span className="text-[11px] text-blue-950/40 font-bold tracking-widest uppercase">{product.brand}</span>
                 </div>
 
                 <div className="flex flex-col gap-3 mt-auto pt-4 w-full">
@@ -78,19 +78,19 @@ export function ProductCard({ product }: ProductCardProps) {
                         href={STORE_INFO.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full bg-primary hover:bg-primary-light text-white shadow-sm hover:shadow-lg transition-all h-11 flex items-center justify-center gap-2 rounded-xl active:scale-95"
+                        className="w-full bg-primary hover:bg-primary-light text-white shadow-[0_10px_20px_rgba(2,132,199,0.3)] hover:shadow-[0_15px_30px_rgba(2,132,199,0.4)] transition-all h-12 flex items-center justify-center gap-2 rounded-2xl active:scale-95"
                     >
                         <MessageSquare className="w-4 h-4 shrink-0" />
-                        <span className="text-sm font-semibold tracking-wide">Tư vấn Zalo</span>
+                        <span className="text-sm font-black tracking-wider">Tư vấn Zalo</span>
                     </a>
 
                     {/* Button 2: Call */}
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="w-full border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-primary/30 hover:text-primary transition-all h-11 flex items-center justify-center gap-2 rounded-xl active:scale-95"
+                        className="w-full bg-blue-50 text-primary border border-primary/20 hover:bg-blue-100 hover:border-primary/40 transition-all h-12 flex items-center justify-center gap-2 rounded-2xl active:scale-95"
                     >
                         <Phone className="w-4 h-4 shrink-0" />
-                        <span className="text-sm font-semibold tracking-wide">Gọi ngay</span>
+                        <span className="text-sm font-black tracking-wider">Gọi ngay</span>
                     </a>
                 </div>
             </div>

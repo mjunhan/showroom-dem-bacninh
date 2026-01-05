@@ -38,7 +38,7 @@ export function Navbar() {
             <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <Link href="/" className="flex items-center space-x-2">
                     <span className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary">
-                        Showroom <span className="text-slate-900">Bedding</span>
+                        Showroom <span className="text-blue-950">Bedding</span>
                     </span>
                 </Link>
 
