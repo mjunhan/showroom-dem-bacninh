@@ -28,10 +28,10 @@ export function ProductCard({ product }: ProductCardProps) {
     return (
         <motion.div
             {...{
-                whileHover: { y: -4, scale: 1.02 },
-                transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
+                whileHover: { y: -4, scale: 1.01 },
+                transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
             } as any}
-            className="bg-white rounded-2xl overflow-hidden border border-slate-100/60 group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] h-full flex flex-col"
+            className="bg-white rounded-3xl overflow-hidden border border-slate-100/80 group transition-all duration-500 hover:shadow-[0_30px_60px_rgba(0,0,0,0.03)] h-full flex flex-col"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
@@ -61,12 +61,12 @@ export function ProductCard({ product }: ProductCardProps) {
             <div className="p-6">
                 <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-[0.2em]">{product.category}</p>
                 <Link href={`/products/${slug}`}>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight min-h-[3rem]">
+                    <h3 className="text-lg font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug min-h-[3rem]">
                         {product.name}
                     </h3>
                 </Link>
                 <div className="flex flex-col items-start gap-1 mb-6 mt-2">
-                    <p className="text-xl font-extrabold text-primary leading-none">
+                    <p className="text-2xl font-bold text-primary leading-none tracking-tight">
                         {product.price === 0 ? "Liên hệ báo giá" : formatVND(product.price)}
                     </p>
                     <span className="text-[11px] text-slate-400 font-medium tracking-wide uppercase">{product.brand}</span>

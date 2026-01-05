@@ -1,29 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-    /* Sophisticated Ocean Blue Palette */
-    --color-primary: #1e3a8a;
-    /* deep blue */
-    --color-primary-light: #3b82f6;
-    --color-secondary: #fdfcfb;
-    /* warming off-white background */
-    --color-accent: #0ea5e9;
-    /* vibrant sky blue */
-    --color-accent-soft: #f0f9ff;
-    /* soft blue tint */
+    /* Sophisticated & Calming Palette */
+    --color-primary: #334155;
+    /* soft slate blue */
+    --color-primary-light: #475569;
+    --color-secondary: #f8fafc;
+    /* muted off-white background */
+    --color-accent: #64748b;
+    /* neutral slate */
+    --color-accent-soft: #f1f5f9;
+    /* very soft slate tint */
 
     --color-slate-900: #0f172a;
     --color-slate-800: #1e293b;
     --color-slate-600: #475569;
     --color-slate-500: #64748b;
     --color-slate-400: #94a3b8;
+    --color-slate-100: #f1f5f9;
 
-    --font-sans: var(--font-be-vietnam-pro), sans-serif;
-    --font-serif: var(--font-be-vietnam-pro), serif;
-    --font-playfair: var(--font-be-vietnam-pro), serif;
+    --font-sans: var(--font-inter), sans-serif;
+    --font-serif: var(--font-playfair), serif;
 
     --radius-xl: 1rem;
-    --radius-2xl: 1.25rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
 
     /* Buttery Soft Transitions */
     --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
@@ -34,7 +35,8 @@
         background-color: var(--color-secondary);
         color: var(--color-slate-600);
         font-family: var(--font-sans);
-        line-height: 1.6;
+        line-height: 1.8;
+        /* increased for readability */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -46,8 +48,9 @@
     h5,
     h6 {
         color: var(--color-slate-900);
-        font-family: var(--font-sans);
-        font-weight: 700;
-        letter-spacing: -0.02em;
+        font-family: var(--font-serif);
+        font-weight: 600;
+        /* slightly softer than bold */
+        letter-spacing: -0.01em;
     }
 }
