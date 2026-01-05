@@ -38,11 +38,11 @@ export function Hero() {
                     <span className="inline-block px-5 py-2 bg-primary/20 backdrop-blur-xl border border-white/10 rounded-full text-xs font-bold mb-8 text-primary-light uppercase tracking-[0.3em]">
                         Chăn Ga Gối Đệm Cao Cấp
                     </span>
-                    <h1 className="text-6xl md:text-8xl font-black font-sans mb-8 leading-[1.1] tracking-tight">
+                    <h1 className="text-4xl md:text-7xl lg:text-8xl font-black font-sans mb-8 leading-[1.1] tracking-tight line-clamp-3">
                         Kiến Tạo Không Gian <br />
                         <span className="text-primary-light">Sống Đẳng Cấp</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-medium">
+                    <p className="text-lg md:text-xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-medium line-clamp-4">
                         Đại lý chăn ga gối đệm chính hãng số 1 Bắc Ninh. Nơi khơi gợi nguồn cảm hứng cho những giấc ngủ say và sự sang trọng tuyệt đỉnh.
                     </p>
                     <div className="flex flex-wrap gap-5">

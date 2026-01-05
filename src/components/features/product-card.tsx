@@ -31,7 +31,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 whileHover: { y: -4, scale: 1.02 },
                 transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
             } as any}
-            className="bg-white rounded-2xl overflow-hidden border border-slate-100/60 group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)]"
+            className="bg-white rounded-2xl overflow-hidden border border-slate-100/60 group transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] h-full flex flex-col"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
@@ -61,18 +61,18 @@ export function ProductCard({ product }: ProductCardProps) {
             <div className="p-6">
                 <p className="text-[10px] font-bold text-primary mb-2 uppercase tracking-[0.2em]">{product.category}</p>
                 <Link href={`/products/${slug}`}>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-1 leading-tight">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight min-h-[3rem]">
                         {product.name}
                     </h3>
                 </Link>
-                <div className="flex flex-col items-start gap-1 mb-6">
+                <div className="flex flex-col items-start gap-1 mb-6 mt-2">
                     <p className="text-xl font-extrabold text-primary leading-none">
                         {product.price === 0 ? "Liên hệ báo giá" : formatVND(product.price)}
                     </p>
                     <span className="text-[11px] text-slate-400 font-medium tracking-wide uppercase">{product.brand}</span>
                 </div>
 
-                <div className="flex flex-col gap-3 mt-auto w-full">
+                <div className="flex flex-col gap-3 mt-auto pt-4 w-full">
                     {/* Button 1: Zalo */}
                     <a
                         href={STORE_INFO.zalo}
