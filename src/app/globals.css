@@ -3,33 +3,33 @@
 @theme {
     /* LOCKED Ocean Blue Design System */
 
-    /* Primary: Deep Ocean Blue (Buttons, Headers, CTA) */
-    --color-primary: #1e40af;
-    /* blue-800 */
-    --color-primary-light: #3b82f6;
-    /* blue-600 for hover states */
-    --color-primary-dark: #1e3a8a;
-    /* blue-900 for deep accents */
+    /* Primary: Ocean Blue (Core brand color) */
+    --color-primary: #0284c7;
+    /* sky-600 - ocean blue */
+    --color-primary-light: #0ea5e9;
+    /* sky-500 - lighter ocean */
+    --color-primary-dark: #0c4a6e;
+    /* sky-900 - deep ocean */
 
-    /* Secondary: Soft Blue-Grey (Backgrounds, subtle elements) */
-    --color-secondary: #f1f5f9;
-    /* slate-100 */
-    --color-secondary-dark: #e2e8f0;
-    /* slate-200 */
+    /* Secondary: Ocean Foam (Backgrounds, subtle elements) */
+    --color-secondary: #f0f9ff;
+    /* sky-50 - very light ocean */
+    --color-secondary-dark: #e0f2fe;
+    /* sky-100 - soft foam */
 
-    /* Accent: Warm Sand/Gold (Highlights, badges) */
+    /* Accent: Warm Coral (Highlights, CTAs that need warmth) */
     --color-accent: #f59e0b;
-    /* amber-500 */
+    /* amber-500 - warm contrast */
     --color-accent-soft: #fef3c7;
-    /* amber-100 */
+    /* amber-100 - soft warm highlight */
 
     /* Neutral Grays (for text hierarchy) */
     --color-text-primary: #0f172a;
     /* slate-900 - main text */
-    --color-text-secondary: #64748b;
-    /* slate-500 - secondary text */
-    --color-text-muted: #94a3b8;
-    /* slate-400 - muted text */
+    --color-text-secondary: #475569;
+    /* slate-600 - secondary text (darker for better contrast) */
+    --color-text-muted: #64748b;
+    /* slate-500 - muted text */
 
     /* Typography */
     --font-sans: var(--font-inter), sans-serif;
@@ -41,17 +41,31 @@
     --radius-lg: 16px;
     --radius-xl: 24px;
 
-    /* Shadows: Ocean-tinted */
-    --shadow-sm: 0 1px 2px 0 rgba(30, 64, 175, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(30, 64, 175, 0.1), 0 2px 4px -1px rgba(30, 64, 175, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(30, 64, 175, 0.1), 0 4px 6px -2px rgba(30, 64, 175, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+    /* Shadows: Ocean Blue-tinted */
+    --shadow-sm: 0 1px 2px 0 rgba(2, 132, 199, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(2, 132, 199, 0.1), 0 2px 4px -1px rgba(2, 132, 199, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(2, 132, 199, 0.1), 0 4px 6px -2px rgba(2, 132, 199, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(2, 132, 199, 0.1), 0 10px 10px -5px rgba(2, 132, 199, 0.04);
 
-    /* Glass Effect */
-    --bg-glass: rgba(255, 255, 255, 0.7);
-    --backdrop-glass: blur(12px);
+    /* Glass Effect: Ocean-tinted */
+    --bg-glass: rgba(240, 249, 255, 0.8);
+    --backdrop-glass: blur(16px);
 
-    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+    /* Motion System */
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Bouncy spring */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    /* Material design */
+    --ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);
+    /* Gentle ease */
+
+    /* Duration Scale */
+    --duration-instant: 100ms;
+    --duration-fast: 150ms;
+    --duration-normal: 250ms;
+    --duration-slow: 400ms;
+
+    --transition-timing: var(--ease-smooth);
 }
 
 @layer utilities {
@@ -60,9 +74,18 @@
         transform: translateZ(0);
         backface-visibility: hidden;
     }
+
+    .smooth-scroll {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
         background-color: #ffffff;
         color: var(--color-text-primary);

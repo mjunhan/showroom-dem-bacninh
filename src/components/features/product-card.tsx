@@ -28,13 +28,17 @@ export function ProductCard({ product }: ProductCardProps) {
     return (
         <motion.div
             {...{
-                whileHover: { y: -8, scale: 1.01, transition: { type: "spring", stiffness: 300, damping: 20 } },
+                whileHover: {
+                    y: -12,
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                },
                 initial: { opacity: 0, y: 30 },
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true },
                 transition: { type: "spring", stiffness: 100, damping: 20 }
             } as any}
-            className="bg-white/80 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-200 hover:border-primary/30 group transition-all duration-300 hover:shadow-lg h-full flex flex-col gpu-accel"
+            className="bg-white/80 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-200 hover:border-primary/40 group transition-all duration-300 hover:shadow-[0_10px_30px_-5px_rgba(2,132,199,0.25)] h-full flex flex-col gpu-accel cursor-pointer"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
@@ -44,7 +48,7 @@ export function ProductCard({ product }: ProductCardProps) {
                         fill
                         placeholder="blur"
                         blurDataURL={imageUrl} // Changed from mainImageUrl to imageUrl
-                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-[0.16, 1, 0.3, 1]"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         onError={() => setHasError(true)}
                     />
@@ -96,14 +100,14 @@ export function ProductCard({ product }: ProductCardProps) {
                         href={STORE_INFO.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-all flex items-center justify-center gap-2 active:scale-95"
+                        className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
                     >
                         <MessageSquare className="w-4 h-4" />
                         <span className="text-sm">Tư vấn Zalo</span>
                     </a>
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="w-full bg-secondary hover:bg-secondary-dark text-primary font-semibold py-3 rounded-lg transition-all flex items-center justify-center gap-2 border border-primary/20 active:scale-95"
+                        className="w-full bg-secondary hover:bg-secondary-dark text-primary font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 border border-primary/20 hover:border-primary/30 active:scale-95 cursor-pointer"
                     >
                         <Phone className="w-4 h-4" />
                         <span className="text-sm">Gọi ngay</span>

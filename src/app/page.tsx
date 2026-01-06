@@ -26,7 +26,7 @@ export default async function Home() {
                                 <h2 className="text-4xl md:text-5xl font-bold mb-4 font-playfair text-slate-900">Sản Phẩm Nổi Bật</h2>
                                 <p className="text-slate-600">Những bộ sưu tập được khách hàng yêu thích nhất tại cửa hàng.</p>
                             </div>
-                            <Link href="/products" className="hidden md:flex items-center space-x-2 text-blue-600 font-bold hover:underline">
+                            <Link href="/products" className="hidden md:flex items-center space-x-2 text-primary font-bold hover:text-primary-dark transition-colors duration-200 cursor-pointer">
                                 <span>Tất cả sản phẩm</span>
                                 <ChevronRight size={20} />
                             </Link>
@@ -39,7 +39,7 @@ export default async function Home() {
                         </div>
 
                         <div className="mt-12 text-center md:hidden">
-                            <Link href="/products" className="inline-flex items-center space-x-2 bg-white px-8 py-4 rounded-xl border border-slate-200 font-bold text-blue-600">
+                            <Link href="/products" className="inline-flex items-center space-x-2 bg-white px-8 py-4 rounded-xl border border-slate-200 font-bold text-primary hover:bg-slate-50 transition-all duration-200 cursor-pointer">
                                 <span>Tất cả sản phẩm</span>
                                 <ChevronRight size={20} />
                             </Link>
@@ -49,7 +49,7 @@ export default async function Home() {
 
                 {/* CTA Section */}
                 <section className="py-24 px-6">
-                    <div className="max-w-7xl mx-auto bg-blue-600 rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden text-center md:text-left">
+                    <div className="max-w-7xl mx-auto bg-primary rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden text-center md:text-left">
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
                             <div className="max-w-xl text-white">
                                 <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">Bạn còn phân vân chưa biết chọn loại nào?</h2>
@@ -58,10 +58,10 @@ export default async function Home() {
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                                <Link href="/contact" className="px-10 py-5 bg-white text-blue-600 rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform">
+                                <Link href="/contact" className="px-10 py-5 bg-white text-primary rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform duration-200 cursor-pointer">
                                     Liên hệ ngay
                                 </Link>
-                                <a href="https://zalo.me" className="px-10 py-5 bg-cyan-500 text-white rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform flex items-center justify-center space-x-2">
+                                <a href="https://zalo.me" className="px-10 py-5 bg-primary-light text-white rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform duration-200 flex items-center justify-center space-x-2 cursor-pointer">
                                     <span>Chat Zalo</span>
                                 </a>
                             </div>

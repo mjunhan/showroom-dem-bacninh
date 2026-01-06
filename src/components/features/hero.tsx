@@ -23,7 +23,7 @@ export function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/90 via-primary/50 to-transparent backdrop-blur-[1px]" />
+                <div className="absolute inset-0 bg-gradient-to-r from-sky-900/95 via-sky-700/80 to-sky-600/40 backdrop-blur-[1px]" />
             </div>
 
             <div className="container mx-auto px-10 relative z-10 text-white flex-1 flex flex-col justify-center pt-40 md:pt-64 pb-32 gpu-accel">
@@ -33,10 +33,9 @@ export function Hero() {
                         animate: { opacity: 1, y: 0 },
                         transition: {
                             type: "spring",
-                            stiffness: 100,
-                            damping: 20,
-                            mass: 1,
-                            duration: 0.8
+                            stiffness: 80,
+                            damping: 15,
+                            mass: 1
                         }
                     } as any}
                     className="max-w-5xl"
@@ -48,30 +47,32 @@ export function Hero() {
                         Khởi Đầu <br />
                         <span className="text-accent">Giấc Ngủ Đế Vương</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-white/80 mb-12 leading-relaxed max-w-2xl">
+                    <p className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-2xl">
                         Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ thượng lưu tại showroom bedding lớn nhất Bắc Ninh.
                     </p>
                     <div className="flex flex-wrap gap-6">
                         <motion.button
                             {...{
-                                whileHover: { scale: 1.05 },
-                                whileTap: { scale: 0.98 }
+                                whileHover: { scale: 1.05, y: -2 },
+                                whileTap: { scale: 0.95 },
+                                transition: { type: "spring", stiffness: 400, damping: 17 }
                             } as any}
                             onClick={scrollToProducts}
-                            className="h-14 px-10 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold text-sm flex items-center space-x-2 transition-all shadow-lg active:scale-95 group"
+                            className="h-14 px-10 bg-primary hover:bg-primary-light text-white rounded-lg font-semibold text-sm flex items-center space-x-2 transition-colors duration-300 shadow-lg cursor-pointer group"
                         >
                             <span>Trải nghiệm ngay</span>
-                            <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform" />
+                            <ChevronRight size={18} className="group-hover:translate-x-2 transition-transform duration-300" />
                         </motion.button>
                         <motion.div
                             {...{
-                                whileHover: { scale: 1.05 },
-                                whileTap: { scale: 0.98 }
+                                whileHover: { scale: 1.05, y: -2 },
+                                whileTap: { scale: 0.95 },
+                                transition: { type: "spring", stiffness: 400, damping: 17 }
                             } as any}
                         >
                             <Link
                                 href="/contact"
-                                className="h-14 px-10 bg-white/10 backdrop-blur-lg border border-white/20 text-white rounded-lg font-semibold text-sm hover:bg-white/20 hover:border-white/30 transition-all flex items-center justify-center active:scale-95"
+                                className="h-14 px-10 bg-white/10 backdrop-blur-lg border border-white/20 text-white rounded-lg font-semibold text-sm hover:bg-white/20 hover:border-white/30 transition-all duration-300 flex items-center justify-center cursor-pointer"
                             >
                                 <span>Nhận tư vấn</span>
                             </Link>

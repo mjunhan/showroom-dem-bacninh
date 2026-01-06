@@ -31,15 +31,22 @@ export function Navbar() {
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 gpu-accel",
                 scrolled
-                    ? "bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-md py-3"
+                    ? "bg-sky-50/90 backdrop-blur-md border-b border-sky-200/50 shadow-md py-3"
                     : "bg-transparent"
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <Link href="/" className="flex items-center space-x-2 group">
-                    <span className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary transition-transform group-hover:scale-105">
-                        Showroom <span className="text-blue-950">Bedding</span>
-                    </span>
+                <Link href="/" className="flex items-center space-x-2 group cursor-pointer">
+                    <motion.span
+                        {...{
+                            initial: { opacity: 0, x: -20 },
+                            animate: { opacity: 1, x: 0 },
+                            transition: { type: "spring", stiffness: 200, damping: 20 }
+                        } as any}
+                        className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary transition-all duration-200 group-hover:scale-105"
+                    >
+                        Showroom <span className="text-primary-dark">Bedding</span>
+                    </motion.span>
                 </Link>
 
                 {/* Desktop Links */}
@@ -48,14 +55,14 @@ export function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors"
+                            className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors duration-200 cursor-pointer"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-light transition-all shadow-md active:scale-95"
+                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-light transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
                     >
                         <Phone size={14} />
                         <span>Gọi ngay</span>
@@ -87,7 +94,7 @@ export function Navbar() {
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-lg font-medium text-slate-900"
+                                    className="text-lg font-medium text-slate-900 hover:text-primary transition-colors duration-200 cursor-pointer"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {link.name}
@@ -95,7 +102,7 @@ export function Navbar() {
                             ))}
                             <a
                                 href={`tel:${STORE_INFO.phone}`}
-                                className="flex items-center justify-center space-x-2 bg-primary text-white py-3 rounded-xl font-bold"
+                                className="flex items-center justify-center space-x-2 bg-primary text-white py-3 rounded-xl font-bold hover:bg-primary-light transition-all duration-200 cursor-pointer"
                             >
                                 <Phone size={18} />
                                 <span>Gọi ngay: {STORE_INFO.phone}</span>

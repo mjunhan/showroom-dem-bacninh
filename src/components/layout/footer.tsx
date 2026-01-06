@@ -4,7 +4,7 @@ import { MapPin, Phone, MessageSquare, Clock } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="bg-primary-dark text-slate-400 py-16 px-6 border-t border-white/10">
+        <footer className="bg-sky-900 text-slate-400 py-16 px-6 border-t border-white/10">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
                 {/* Brand */}
                 <div className="col-span-1 md:col-span-2">
@@ -20,10 +20,10 @@ export function Footer() {
                 <div>
                     <h3 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">Liên kết</h3>
                     <ul className="space-y-4">
-                        <li><Link href="/products" className="hover:text-primary transition-colors text-sm">Sản phẩm</Link></li>
-                        <li><Link href="/blog" className="hover:text-primary transition-colors font-bold text-sm tracking-wide">Tin tức</Link></li>
-                        <li><Link href="/contact" className="hover:text-primary transition-colors font-bold text-sm tracking-wide">Liên hệ</Link></li>
-                        <li><Link href="/policy" className="hover:text-primary transition-colors font-bold text-sm tracking-wide">Chính sách bảo hành</Link></li>
+                        <li><Link href="/products" className="hover:text-accent transition-colors duration-300 text-sm font-medium cursor-pointer">Sản phẩm</Link></li>
+                        <li><Link href="/blog" className="hover:text-accent transition-colors duration-300 text-sm font-medium cursor-pointer">Tin tức</Link></li>
+                        <li><Link href="/contact" className="hover:text-accent transition-colors duration-300 text-sm font-medium cursor-pointer">Liên hệ</Link></li>
+                        <li><Link href="/policy" className="hover:text-accent transition-colors duration-300 text-sm font-medium cursor-pointer">Chính sách bảo hành</Link></li>
                     </ul>
                 </div>
 
@@ -32,16 +32,16 @@ export function Footer() {
                     <h3 className="text-white font-bold mb-6 text-sm uppercase tracking-wider">Thông tin</h3>
                     <ul className="space-y-5">
                         <li className="flex items-start space-x-4">
-                            <MapPin className="text-primary shrink-0" size={18} />
+                            <MapPin className="text-accent shrink-0" size={18} />
                             <span className="text-sm font-bold leading-snug">{STORE_INFO.address}</span>
                         </li>
                         <li className="flex items-center space-x-4">
-                            <Phone className="text-primary shrink-0" size={18} />
-                            <a href={`tel:${STORE_INFO.phone}`} className="hover:text-white transition-colors text-sm font-bold">{STORE_INFO.phone}</a>
+                            <Phone className="text-accent shrink-0" size={18} />
+                            <a href={`tel:${STORE_INFO.phone}`} className="hover:text-white transition-colors duration-300 text-sm font-bold cursor-pointer">{STORE_INFO.phone}</a>
                         </li>
                         <li className="flex items-center space-x-4">
-                            <MessageSquare className="text-primary shrink-0" size={18} />
-                            <a href={STORE_INFO.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-sm font-bold">Chat Zalo</a>
+                            <MessageSquare className="text-accent shrink-0" size={18} />
+                            <a href={STORE_INFO.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 text-sm font-bold cursor-pointer">Chat Zalo</a>
                         </li>
                     </ul>
                 </div>
