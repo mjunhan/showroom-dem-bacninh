@@ -49,16 +49,20 @@ export default async function Home() {
 
                 {/* CTA Section */}
                 <section className="py-32 px-6 bg-secondary">
-                    <div className="max-w-7xl mx-auto bg-primary rounded-lg p-12 md:p-24 relative overflow-hidden text-left">
+                    <div className="max-w-7xl mx-auto bg-gradient-to-br from-primary to-primary-light rounded-lg p-12 md:p-24 relative overflow-hidden text-left shadow-2xl">
+                        {/* Decorative Circles */}
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
+
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
-                            <div className="max-w-xl text-white">
-                                <h2 className="text-4xl md:text-5xl font-bold mb-8 font-playfair leading-tight">Bạn còn phân vân chưa biết chọn loại nào?</h2>
-                                <p className="text-slate-300 text-lg leading-relaxed mb-0 font-medium">
+                            <div className="max-w-xl">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-8 font-playfair leading-tight text-white mb-6">Bạn còn phân vân chưa biết chọn loại nào?</h2>
+                                <p className="text-secondary/80 text-lg leading-relaxed mb-0 font-medium">
                                     Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng tư vấn để bạn chọn được chiếc đệm và bộ chăn ga ưng ý nhất.
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-6 shrink-0 w-full md:w-auto">
-                                <Link href="/contact" className="px-12 py-5 bg-accent text-white rounded-lg font-bold shadow-lg hover:bg-accent/90 transition-all duration-300 text-center uppercase tracking-widest text-sm">
+                                <Link href="/contact" className="px-12 py-5 bg-white text-primary rounded-lg font-bold shadow-lg hover:bg-secondary transition-all duration-300 text-center uppercase tracking-widest text-sm">
                                     Liên hệ ngay
                                 </Link>
                                 <a href="https://zalo.me" className="px-12 py-5 bg-white/10 text-white rounded-lg font-bold border border-white/20 hover:bg-white/20 transition-all duration-300 text-center uppercase tracking-widest text-sm">
