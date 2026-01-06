@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,6 +23,10 @@ interface NavbarProps {
 export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const pathname = usePathname();
+
+    // Don't render Navbar on Studio pages
+    if (pathname?.startsWith('/studio')) return null;
 
     useEffect(() => {
         const handleScroll = () => {

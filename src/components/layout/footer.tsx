@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { MapPin, Phone, MessageSquare } from "lucide-react";
 
@@ -14,6 +17,10 @@ export function Footer({
     address = "123 Đường ABC, Quận XYZ, TP HCM",
     zaloUrl = "https://zalo.me"
 }: FooterProps) {
+    const pathname = usePathname();
+
+    if (pathname?.startsWith('/studio')) return null;
+
     return (
         <footer className="bg-primary text-slate-400 py-24 px-6 border-t border-white/5">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
