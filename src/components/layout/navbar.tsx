@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
+import { SPRING_TRANSITION } from "@/lib/animation";
 
 const navLinks = [
     { name: "Trang chủ", href: "/" },
@@ -45,9 +46,9 @@ export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }
                         {...{
                             initial: { opacity: 0, x: -20 },
                             animate: { opacity: 1, x: 0 },
-                            transition: { duration: 0.5 }
+                            transition: SPRING_TRANSITION
                         } as any}
-                        className="text-xl md:text-2xl font-bold font-sans tracking-tight text-primary transition-all duration-200"
+                        className="text-xl md:text-2xl font-bold font-sans tracking-tight text-primary"
                     >
                         {siteName}
                     </motion.span>
@@ -59,27 +60,44 @@ export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors duration-200 cursor-pointer"
+                            className="relative block"
                         >
-                            {link.name}
+                            <motion.span
+                                className="text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-primary transition-colors duration-200 cursor-pointer block"
+                                {...({
+                                    whileHover: { scale: 1.05 },
+                                    transition: SPRING_TRANSITION
+                                } as any)}
+                            >
+                                {link.name}
+                            </motion.span>
                         </Link>
                     ))}
-                    <a
+                    <motion.a
                         href={`tel:${hotline}`}
-                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-light transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
+                        className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-light shadow-md cursor-pointer"
+                        {...({
+                            whileHover: { scale: 1.05 },
+                            whileTap: { scale: 0.95 },
+                            transition: SPRING_TRANSITION
+                        } as any)}
                     >
                         <Phone size={14} />
                         <span>Gọi ngay</span>
-                    </a>
+                    </motion.a>
                 </div>
 
                 {/* Mobile Toggle */}
-                <button
+                <motion.button
                     className="md:hidden text-slate-900"
                     onClick={() => setIsOpen(!isOpen)}
+                    {...({
+                        whileTap: { scale: 0.9 },
+                        transition: SPRING_TRANSITION
+                    } as any)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                </motion.button>
             </div>
 
             {/* Mobile Menu */}
@@ -89,7 +107,8 @@ export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }
                         {...{
                             initial: { opacity: 0, height: 0 },
                             animate: { opacity: 1, height: "auto" },
-                            exit: { opacity: 0, height: 0 }
+                            exit: { opacity: 0, height: 0 },
+                            transition: SPRING_TRANSITION
                         } as any}
                         className="md:hidden bg-white mt-4 rounded-2xl shadow-xl overflow-hidden"
                     >
@@ -98,19 +117,31 @@ export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-lg font-medium text-slate-900 hover:text-primary transition-colors duration-200 cursor-pointer"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    {link.name}
+                                    <motion.span
+                                        className="block text-lg font-medium text-slate-900 hover:text-primary transition-colors duration-200 cursor-pointer"
+                                        {...({
+                                            whileHover: { x: 10 },
+                                            transition: SPRING_TRANSITION
+                                        } as any)}
+                                    >
+                                        {link.name}
+                                    </motion.span>
                                 </Link>
                             ))}
-                            <a
+                            <motion.a
                                 href={`tel:${hotline}`}
                                 className="flex items-center justify-center space-x-2 bg-primary text-white py-3 rounded-xl font-bold hover:bg-primary-light transition-all duration-200 cursor-pointer"
+                                {...({
+                                    whileHover: { scale: 1.02 },
+                                    whileTap: { scale: 0.98 },
+                                    transition: SPRING_TRANSITION
+                                } as any)}
                             >
                                 <Phone size={18} />
                                 <span>Gọi ngay: {hotline}</span>
-                            </a>
+                            </motion.a>
                         </div>
                     </motion.div>
                 )}

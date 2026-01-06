@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { urlFor } from "@/lib/sanity";
 import { cn } from "@/lib/utils";
+import { SPRING_TRANSITION, HOVER_SCALE } from "@/lib/animation";
 
 interface SanityImage {
     _key?: string;
@@ -38,7 +39,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
                             initial: { opacity: 0 },
                             animate: { opacity: 1 },
                             exit: { opacity: 0 },
-                            transition: { duration: 0.3, ease: "easeInOut" }
+                            transition: { ...SPRING_TRANSITION, opacity: { duration: 0.2 } }
                         } as any}
                         className="relative w-full h-full"
                     >
@@ -61,23 +62,34 @@ export function ProductGallery({ images }: ProductGalleryProps) {
                         {images.map((image, index) => {
                             const isSelected = (selectedImage._key || selectedImage.asset._ref) === (image._key || image.asset._ref);
                             return (
-                                <button
+                                <motion.button
                                     key={image._key || image.asset._ref || index}
                                     onClick={() => setSelectedImage(image)}
-                                    className={cn(
-                                        "relative aspect-square rounded-lg overflow-hidden cursor-pointer transition-all",
-                                        isSelected
-                                            ? "border-2 border-primary ring-2 ring-primary/20 opacity-100"
-                                            : "border-2 border-transparent opacity-70 hover:opacity-100"
-                                    )}
+                                    className="relative aspect-square rounded-lg overflow-hidden cursor-pointer bg-slate-50"
+                                    {...({
+                                        whileHover: HOVER_SCALE,
+                                        whileTap: { scale: 0.95 }
+                                    } as any)}
                                 >
                                     <Image
                                         src={urlFor(image).url()}
                                         alt={`Thumbnail ${index + 1}`}
                                         fill
-                                        className="object-cover"
+                                        className={cn(
+                                            "object-cover transition-opacity duration-200",
+                                            isSelected ? "opacity-100" : "opacity-70 hover:opacity-100"
+                                        )}
                                     />
-                                </button>
+                                    {isSelected && (
+                                        <motion.div
+                                            className="absolute inset-0 border-2 border-primary rounded-lg z-10"
+                                            {...({
+                                                layoutId: "active-ring",
+                                                transition: SPRING_TRANSITION
+                                            } as any)}
+                                        />
+                                    )}
+                                </motion.button>
                             );
                         })}
                     </div>
@@ -87,23 +99,33 @@ export function ProductGallery({ images }: ProductGalleryProps) {
                         {images.map((image, index) => {
                             const isSelected = (selectedImage._key || selectedImage.asset._ref) === (image._key || image.asset._ref);
                             return (
-                                <button
+                                <motion.button
                                     key={image._key || image.asset._ref || index}
                                     onClick={() => setSelectedImage(image)}
-                                    className={cn(
-                                        "relative aspect-square w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden cursor-pointer transition-all snap-start",
-                                        isSelected
-                                            ? "border-2 border-primary ring-2 ring-primary/20 opacity-100"
-                                            : "border-2 border-transparent opacity-70 active:opacity-100"
-                                    )}
+                                    className="relative aspect-square w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden cursor-pointer bg-slate-50 snap-start"
+                                    {...({
+                                        whileTap: { scale: 0.95 }
+                                    } as any)}
                                 >
                                     <Image
                                         src={urlFor(image).url()}
                                         alt={`Thumbnail ${index + 1}`}
                                         fill
-                                        className="object-cover"
+                                        className={cn(
+                                            "object-cover transition-opacity duration-200",
+                                            isSelected ? "opacity-100" : "opacity-70"
+                                        )}
                                     />
-                                </button>
+                                    {isSelected && (
+                                        <motion.div
+                                            className="absolute inset-0 border-2 border-primary rounded-lg z-10"
+                                            {...({
+                                                layoutId: "active-ring-mobile",
+                                                transition: SPRING_TRANSITION
+                                            } as any)}
+                                        />
+                                    )}
+                                </motion.button>
                             );
                         })}
                     </div>

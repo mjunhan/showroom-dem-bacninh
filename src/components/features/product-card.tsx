@@ -9,6 +9,7 @@ import { Product } from "@/lib/data";
 import { formatVND, cn } from "@/lib/utils";
 import { STORE_INFO } from "@/lib/data";
 import { urlFor } from "@/lib/sanity";
+import { SPRING_TRANSITION, HOVER_SCALE } from "@/lib/animation";
 
 interface ProductCardProps {
     product: Product;
@@ -28,16 +29,13 @@ export function ProductCard({ product }: ProductCardProps) {
     return (
         <motion.div
             {...{
-                whileHover: {
-                    y: -8,
-                    transition: { duration: 0.3 }
-                },
+                whileHover: HOVER_SCALE,
                 initial: { opacity: 0, y: 20 },
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true },
-                transition: { duration: 0.5 }
+                transition: SPRING_TRANSITION
             } as any}
-            className="bg-white rounded-lg overflow-hidden border border-slate-100 hover:border-primary/20 group transition-all duration-300 h-full flex flex-col gpu-accel cursor-pointer"
+            className="bg-white rounded-lg overflow-hidden border border-slate-100 hover:border-primary/20 group h-full flex flex-col gpu-accel cursor-pointer shadow-sm hover:shadow-md"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
@@ -47,7 +45,7 @@ export function ProductCard({ product }: ProductCardProps) {
                         fill
                         placeholder="blur"
                         blurDataURL={imageUrl}
-                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                        className="object-cover transition-transform duration-700 ease-out"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         onError={() => setHasError(true)}
                     />
@@ -97,21 +95,31 @@ export function ProductCard({ product }: ProductCardProps) {
 
                 {/* CTA Buttons - Simplified for cleaner look */}
                 <div className="flex gap-2 mt-6">
-                    <a
+                    <motion.a
                         href={STORE_INFO.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 bg-primary text-white font-bold py-3 rounded-lg text-xs transition-all hover:bg-primary-light flex items-center justify-center gap-2"
+                        className="flex-1 bg-primary text-white font-bold py-3 rounded-lg text-xs flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+                        {...({
+                            whileHover: { scale: 1.05 },
+                            whileTap: { scale: 0.95 },
+                            transition: SPRING_TRANSITION
+                        } as any)}
                     >
                         <MessageSquare className="w-4 h-4" />
                         Tư vấn
-                    </a>
-                    <a
+                    </motion.a>
+                    <motion.a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="p-3 bg-secondary/30 text-primary rounded-lg border border-primary/10 hover:bg-secondary/50 transition-all flex items-center justify-center"
+                        className="p-3 bg-secondary/10 text-primary rounded-lg border border-primary/10 flex items-center justify-center"
+                        {...({
+                            whileHover: { scale: 1.05 },
+                            whileTap: { scale: 0.95 },
+                            transition: SPRING_TRANSITION
+                        } as any)}
                     >
                         <Phone className="w-4 h-4" />
-                    </a>
+                    </motion.a>
                 </div>
             </div>
         </motion.div>
