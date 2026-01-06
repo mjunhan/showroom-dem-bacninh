@@ -14,6 +14,19 @@ async function getData() {
     return data;
 }
 
+function extractMapUrl(input: string): string {
+    if (!input) return "";
+    // Check if the input is a full iframe tag
+    if (input.trim().startsWith("<iframe")) {
+        const srcMatch = input.match(/src="([^"]*)"/);
+        if (srcMatch && srcMatch[1]) {
+            return srcMatch[1];
+        }
+    }
+    // If not an iframe tag (or regex failed), return as is (assuming it's a direct URL)
+    return input;
+}
+
 export default async function ContactPage() {
     const { contact, siteSettings } = await getData();
 
