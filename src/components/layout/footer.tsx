@@ -4,12 +4,12 @@ import { MapPin, Phone, MessageSquare, Clock } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="bg-sky-900 text-slate-400 py-16 px-6 border-t border-white/10">
+        <footer className="bg-primary text-slate-400 py-24 px-6 border-t border-white/5">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
                 {/* Brand */}
                 <div className="col-span-1 md:col-span-2">
-                    <h2 className="text-2xl font-black font-sans tracking-tight text-white mb-6">
-                        Showroom <span className="text-accent">Bedding</span>
+                    <h2 className="text-2xl font-bold font-sans tracking-tight text-white mb-6">
+                        Showroom <span className="text-accent italic font-serif">Bedding</span>
                     </h2>
                     <p className="max-w-md mb-8 leading-relaxed text-slate-400">
                         Nơi khơi nguồn cảm hứng cho không gian sống thượng lưu. Chúng tôi cung cấp giải pháp giấc ngủ hoàn hảo với những sản phẩm chăn ga gối đệm tinh hoa nhất.

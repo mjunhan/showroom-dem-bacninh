@@ -32,7 +32,7 @@ export function BlogCard({ post }: BlogCardProps) {
                 whileHover: { y: -4 },
                 transition: { duration: 0.3 }
             } as any}
-            className="bg-white rounded-2xl overflow-hidden border border-slate-100 group flex flex-col h-full hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all"
+            className="bg-white rounded-lg overflow-hidden border border-slate-100 group flex flex-col h-full hover:border-primary/20 transition-all duration-300"
         >
             <Link href={`/blog/${post.slug}`} className="block relative aspect-[16/9] overflow-hidden bg-slate-50">
                 {imageUrl && !hasError ? (
@@ -51,9 +51,9 @@ export function BlogCard({ post }: BlogCardProps) {
                 )}
             </Link>
 
-            <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center gap-2 text-slate-400 text-xs mb-3">
-                    <Calendar size={14} />
+            <div className="p-6 flex flex-col flex-grow text-left">
+                <div className="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-3">
+                    <Calendar size={12} />
                     <span>{formattedDate}</span>
                 </div>
 
@@ -63,16 +63,16 @@ export function BlogCard({ post }: BlogCardProps) {
                     </h3>
                 </Link>
 
-                <p className="text-slate-500 text-sm line-clamp-3 mb-6 flex-grow">
+                <p className="text-slate-500 text-sm line-clamp-3 mb-6 flex-grow leading-relaxed">
                     {post.excerpt}
                 </p>
 
                 <Link
                     href={`/blog/${post.slug}`}
-                    className="flex items-center gap-2 text-primary font-bold text-sm group/btn"
+                    className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider group/btn"
                 >
                     Đọc thêm
-                    <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                 </Link>
             </div>
         </motion.div>

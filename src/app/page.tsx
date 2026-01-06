@@ -14,17 +14,17 @@ export default async function Home() {
     return (
         <>
             <Navbar />
-            <main className="bg-slate-50">
+            <main className="bg-secondary min-h-screen">
                 <Hero />
                 <USP />
 
                 {/* Featured Products */}
-                <section id="featured-products" className="py-24 px-6">
+                <section id="featured-products" className="py-24 px-6 bg-white">
                     <div className="max-w-7xl mx-auto">
-                        <div className="flex items-end justify-between mb-12">
-                            <div>
-                                <h2 className="text-4xl md:text-5xl font-bold mb-4 font-playfair text-slate-900">Sản Phẩm Nổi Bật</h2>
-                                <p className="text-slate-600">Những bộ sưu tập được khách hàng yêu thích nhất tại cửa hàng.</p>
+                        <div className="flex items-end justify-between mb-16">
+                            <div className="text-left">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-4 font-playfair text-slate-900 tracking-tight">Sản Phẩm Nổi Bật</h2>
+                                <p className="text-slate-500 font-medium">Những bộ sưu tập được khách hàng yêu thích nhất tại cửa hàng.</p>
                             </div>
                             <Link href="/products" className="hidden md:flex items-center space-x-2 text-primary font-bold hover:text-primary-dark transition-colors duration-200 cursor-pointer">
                                 <span>Tất cả sản phẩm</span>
@@ -48,26 +48,24 @@ export default async function Home() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="py-24 px-6">
-                    <div className="max-w-7xl mx-auto bg-primary rounded-[2.5rem] p-12 md:p-20 relative overflow-hidden text-center md:text-left">
-                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+                <section className="py-32 px-6 bg-secondary">
+                    <div className="max-w-7xl mx-auto bg-primary rounded-lg p-12 md:p-24 relative overflow-hidden text-left">
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
                             <div className="max-w-xl text-white">
-                                <h2 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">Bạn còn phân vân chưa biết chọn loại nào?</h2>
-                                <p className="text-blue-100 text-lg leading-relaxed mb-0">
+                                <h2 className="text-4xl md:text-5xl font-bold mb-8 font-playfair leading-tight">Bạn còn phân vân chưa biết chọn loại nào?</h2>
+                                <p className="text-slate-300 text-lg leading-relaxed mb-0 font-medium">
                                     Đội ngũ chuyên gia của chúng tôi luôn sẵn sàng tư vấn để bạn chọn được chiếc đệm và bộ chăn ga ưng ý nhất.
                                 </p>
                             </div>
-                            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                                <Link href="/contact" className="px-10 py-5 bg-white text-primary rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform duration-200 cursor-pointer">
+                            <div className="flex flex-col sm:flex-row gap-6 shrink-0 w-full md:w-auto">
+                                <Link href="/contact" className="px-12 py-5 bg-accent text-primary rounded-lg font-bold shadow-lg hover:bg-accent/90 transition-all duration-300 text-center uppercase tracking-widest text-sm">
                                     Liên hệ ngay
                                 </Link>
-                                <a href="https://zalo.me" className="px-10 py-5 bg-primary-light text-white rounded-2xl font-bold shadow-xl hover:scale-105 transition-transform duration-200 flex items-center justify-center space-x-2 cursor-pointer">
-                                    <span>Chat Zalo</span>
+                                <a href="https://zalo.me" className="px-12 py-5 bg-white/10 text-white rounded-lg font-bold border border-white/20 hover:bg-white/20 transition-all duration-300 text-center uppercase tracking-widest text-sm">
+                                    Chat Zalo
                                 </a>
                             </div>
                         </div>
-
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
                     </div>
                 </section>
             </main>

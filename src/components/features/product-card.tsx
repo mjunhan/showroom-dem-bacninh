@@ -29,31 +29,30 @@ export function ProductCard({ product }: ProductCardProps) {
         <motion.div
             {...{
                 whileHover: {
-                    y: -12,
-                    scale: 1.02,
-                    transition: { type: "spring", stiffness: 400, damping: 25 }
+                    y: -8,
+                    transition: { duration: 0.3 }
                 },
-                initial: { opacity: 0, y: 30 },
+                initial: { opacity: 0, y: 20 },
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true },
-                transition: { type: "spring", stiffness: 100, damping: 20 }
+                transition: { duration: 0.5 }
             } as any}
-            className="bg-white/80 backdrop-blur-sm rounded-lg overflow-hidden border border-slate-200 hover:border-primary/40 group transition-all duration-300 hover:shadow-[0_10px_30px_-5px_rgba(2,132,199,0.25)] h-full flex flex-col gpu-accel cursor-pointer"
+            className="bg-white rounded-lg overflow-hidden border border-slate-100 hover:border-primary/20 group transition-all duration-300 h-full flex flex-col gpu-accel cursor-pointer"
         >
             <Link href={`/products/${slug}`} className="block relative aspect-[4/5] overflow-hidden bg-slate-50">
                 {!hasError ? (
                     <Image
-                        src={imageUrl} // Changed from mainImageUrl to imageUrl to match existing variable
+                        src={imageUrl}
                         alt={product.name}
                         fill
                         placeholder="blur"
-                        blurDataURL={imageUrl} // Changed from mainImageUrl to imageUrl
-                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                        blurDataURL={imageUrl}
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         onError={() => setHasError(true)}
                     />
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-blue-50 text-blue-200">
+                    <div className="w-full h-full flex items-center justify-center bg-slate-50 text-slate-200">
                         <Package size={48} />
                     </div>
                 )}
@@ -61,56 +60,57 @@ export function ProductCard({ product }: ProductCardProps) {
                 {/* Status Badge */}
                 <div className="absolute top-4 right-4">
                     <span className={cn(
-                        "px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider backdrop-blur-sm",
+                        "px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider",
                         product.status === "Còn hàng"
-                            ? "bg-green-50 text-green-700 border border-green-200"
-                            : "bg-slate-50 text-slate-600 border border-slate-200"
+                            ? "bg-green-50 text-green-700 border border-green-100"
+                            : "bg-slate-50 text-slate-500 border border-slate-100"
                     )}>
                         {product.status}
                     </span>
                 </div>
             </Link>
 
-            <div className="p-6 flex flex-col flex-1">
+            <div className="p-6 flex flex-col flex-1 text-left">
                 {/* Category */}
-                <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
+                <p className="text-[10px] font-bold text-accent uppercase tracking-[0.1em] mb-2">
                     {product.category}
                 </p>
 
                 {/* Product Title */}
                 <Link href={`/products/${slug}`}>
-                    <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-snug min-h-[3.5rem]">
+                    <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
                         {product.name}
                     </h3>
                 </Link>
 
-                {/* Price & Brand */}
-                <div className="flex flex-col items-start gap-1 mb-6">
-                    <p className="text-xl font-bold text-primary leading-none">
+                {/* Subtext: Brand */}
+                <p className="text-sm font-medium text-slate-500 mb-4 uppercase tracking-wide">
+                    {product.brand}
+                </p>
+
+                {/* Price */}
+                <div className="mt-auto pt-4 border-t border-slate-50">
+                    <p className="text-xl font-bold text-primary">
                         {product.price === 0 ? "Liên hệ báo giá" : formatVND(product.price)}
                     </p>
-                    <span className="text-xs text-slate-500 font-medium uppercase tracking-wide">
-                        {product.brand}
-                    </span>
                 </div>
 
-                {/* CTA Buttons */}
-                <div className="flex flex-col gap-3 mt-auto">
+                {/* CTA Buttons - Simplified for cleaner look */}
+                <div className="flex gap-2 mt-6">
                     <a
                         href={STORE_INFO.zalo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 active:scale-95 cursor-pointer"
+                        className="flex-1 bg-primary text-white font-bold py-3 rounded-lg text-xs transition-all hover:bg-primary-light flex items-center justify-center gap-2"
                     >
                         <MessageSquare className="w-4 h-4" />
-                        <span className="text-sm">Tư vấn Zalo</span>
+                        Tư vấn
                     </a>
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="w-full bg-secondary hover:bg-secondary-dark text-primary font-semibold py-3 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 border border-primary/20 hover:border-primary/30 active:scale-95 cursor-pointer"
+                        className="p-3 bg-secondary text-primary rounded-lg border border-slate-200 hover:bg-slate-100 transition-all flex items-center justify-center"
                     >
                         <Phone className="w-4 h-4" />
-                        <span className="text-sm">Gọi ngay</span>
                     </a>
                 </div>
             </div>

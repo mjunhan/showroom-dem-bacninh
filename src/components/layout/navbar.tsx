@@ -29,9 +29,9 @@ export function Navbar() {
     return (
         <nav
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 gpu-accel",
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
                 scrolled
-                    ? "bg-sky-50/90 backdrop-blur-md border-b border-sky-200/50 shadow-md py-3"
+                    ? "bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm py-3"
                     : "bg-transparent"
             )}
         >
@@ -41,11 +41,11 @@ export function Navbar() {
                         {...{
                             initial: { opacity: 0, x: -20 },
                             animate: { opacity: 1, x: 0 },
-                            transition: { type: "spring", stiffness: 200, damping: 20 }
+                            transition: { duration: 0.5 }
                         } as any}
-                        className="text-xl md:text-2xl font-black font-sans tracking-tight text-primary transition-all duration-200 group-hover:scale-105"
+                        className="text-xl md:text-2xl font-bold font-sans tracking-tight text-primary transition-all duration-200"
                     >
-                        Showroom <span className="text-primary-dark">Bedding</span>
+                        Showroom <span className="text-accent italic font-serif">Bedding</span>
                     </motion.span>
                 </Link>
 
