@@ -37,10 +37,10 @@ export function USP() {
                         } as any}
                         className="flex flex-col items-start text-left p-8 rounded-lg border border-slate-50 hover:border-primary/10 transition-all duration-300 group cursor-default"
                     >
-                        <div className="mb-6 p-3 bg-secondary rounded-lg group-hover:bg-accent/10 transition-colors duration-300">
+                        <div className="mb-6 p-3 bg-secondary/50 rounded-lg group-hover:bg-accent/20 transition-colors duration-300">
                             {f.icon}
                         </div>
-                        <h3 className="text-xl font-bold mb-4 text-slate-900">{f.title}</h3>
+                        <h3 className="text-xl font-bold mb-4 text-primary">{f.title}</h3>
                         <p className="text-slate-500 font-medium leading-relaxed">{f.desc}</p>
                     </motion.div>
                 ))}

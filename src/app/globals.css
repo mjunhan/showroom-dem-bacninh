@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-    /* LOCKED Luxury Navy & Sand Design System */
+    /* LOCKED Multilayered Blue Design System */
 
-    /* Primary: Deep Navy Blue (Authority & Premium) */
-    --color-primary: #0B2447;
-    --color-primary-light: #19376D;
-    --color-primary-dark: #051426;
+    /* Primary: Deep Navy Blue */
+    --color-primary: #0F2854;
+    --color-primary-light: #1C4D8D;
+    --color-primary-dark: #07152B;
 
-    /* Secondary: Slate White (Clean backgrounds) */
-    --color-secondary: #F8FAFC;
-    --color-secondary-dark: #E2E8F0;
+    /* Secondary: Sky Blue (Light backgrounds) */
+    --color-secondary: #BDE8F5;
+    --color-secondary-dark: #A5D7E8;
 
-    /* Accent: Sand (Highlights & Warmth) */
-    --color-accent: #DBB98F;
-    --color-accent-soft: #F5E6D3;
+    /* Accent: Mid-Light Blue (Action elements) */
+    --color-accent: #4988C4;
+    --color-accent-soft: #DAE8F5;
 
     /* Neutral Grays */
     --color-text-primary: #0F172A;

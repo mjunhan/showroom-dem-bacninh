@@ -52,7 +52,7 @@ export function BlogCard({ post }: BlogCardProps) {
             </Link>
 
             <div className="p-6 flex flex-col flex-grow text-left">
-                <div className="flex items-center gap-2 text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-3">
+                <div className="flex items-center gap-2 text-accent text-[10px] font-bold uppercase tracking-widest mb-3">
                     <Calendar size={12} />
                     <span>{formattedDate}</span>
                 </div>

@@ -70,7 +70,7 @@ export function ProductCard({ product }: ProductCardProps) {
                 </div>
             </Link>
 
-            <div className="p-6 flex flex-col flex-1 text-left">
+            <div className="p-6 flex flex-col flex-1 text-left bg-white">
                 {/* Category */}
                 <p className="text-[10px] font-bold text-accent uppercase tracking-[0.1em] mb-2">
                     {product.category}
@@ -108,7 +108,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     </a>
                     <a
                         href={`tel:${STORE_INFO.phone}`}
-                        className="p-3 bg-secondary text-primary rounded-lg border border-slate-200 hover:bg-slate-100 transition-all flex items-center justify-center"
+                        className="p-3 bg-secondary/30 text-primary rounded-lg border border-primary/10 hover:bg-secondary/50 transition-all flex items-center justify-center"
                     >
                         <Phone className="w-4 h-4" />
                     </a>

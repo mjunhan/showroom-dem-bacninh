@@ -23,7 +23,7 @@ export function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0B2447]/95 via-[#0B2447]/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0F2854]/95 via-[#0F2854]/80 to-transparent" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10 text-white flex-1 flex flex-col justify-center pt-40 md:pt-64 pb-32">
@@ -40,10 +40,10 @@ export function Hero() {
                     </span>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-serif mb-8 leading-[1.1] tracking-tight text-white">
                         Khởi Đầu <br />
-                        <span className="text-accent italic">Giấc Ngủ Đế Vương</span>
+                        <span className="text-accent italic">Giấc Ngủ Tuyệt Vời</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-slate-200 mb-12 leading-relaxed max-w-2xl font-medium">
-                        Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ thượng lưu tại showroom bedding lớn nhất Bắc Ninh.
+                    <p className="text-lg md:text-xl text-secondary mb-12 leading-relaxed max-w-2xl font-medium">
+                        Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ tinh tế tại showroom bedding lớn nhất Bắc Ninh.
                     </p>
                     <div className="flex flex-wrap gap-4">
                         <button

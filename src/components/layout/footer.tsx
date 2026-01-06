@@ -37,11 +37,11 @@ export function Footer() {
                         </li>
                         <li className="flex items-center space-x-4">
                             <Phone className="text-accent shrink-0" size={18} />
-                            <a href={`tel:${STORE_INFO.phone}`} className="hover:text-white transition-colors duration-300 text-sm font-bold cursor-pointer">{STORE_INFO.phone}</a>
+                            <a href={`tel:${STORE_INFO.phone}`} className="hover:text-secondary transition-colors duration-300 text-sm font-bold cursor-pointer">{STORE_INFO.phone}</a>
                         </li>
                         <li className="flex items-center space-x-4">
                             <MessageSquare className="text-accent shrink-0" size={18} />
-                            <a href={STORE_INFO.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300 text-sm font-bold cursor-pointer">Chat Zalo</a>
+                            <a href={STORE_INFO.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-300 text-sm font-bold cursor-pointer">Chat Zalo</a>
                         </li>
                     </ul>
                 </div>

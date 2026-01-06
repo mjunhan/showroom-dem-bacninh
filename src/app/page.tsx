@@ -58,7 +58,7 @@ export default async function Home() {
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-6 shrink-0 w-full md:w-auto">
-                                <Link href="/contact" className="px-12 py-5 bg-accent text-primary rounded-lg font-bold shadow-lg hover:bg-accent/90 transition-all duration-300 text-center uppercase tracking-widest text-sm">
+                                <Link href="/contact" className="px-12 py-5 bg-accent text-white rounded-lg font-bold shadow-lg hover:bg-accent/90 transition-all duration-300 text-center uppercase tracking-widest text-sm">
                                     Liên hệ ngay
                                 </Link>
                                 <a href="https://zalo.me" className="px-12 py-5 bg-white/10 text-white rounded-lg font-bold border border-white/20 hover:bg-white/20 transition-all duration-300 text-center uppercase tracking-widest text-sm">
