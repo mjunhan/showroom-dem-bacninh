@@ -24,7 +24,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
     return (
         <>
             <Navbar />
-            <main className="pt-24 md:pt-32 pb-24 px-4 md:px-6 bg-secondary min-h-screen">
+            <main className="pt-24 md:pt-32 pb-24 px-4 md:px-6 bg-slate-50 min-h-screen">
                 <div className="max-w-7xl mx-auto">
                     {/* Back Button */}
                     <Link href="/products" className="inline-flex items-center space-x-2 text-slate-400 hover:text-primary mb-8 font-bold text-xs uppercase tracking-widest transition-colors group">
@@ -128,7 +128,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                                         ]).map((feat: any, i: number) => {
                                             const isSpec = typeof feat === 'string';
                                             return (
-                                                <div key={i} className="flex items-center space-x-3 text-slate-700 font-bold text-xs uppercase tracking-widest p-4 rounded-lg bg-secondary/30 border border-primary/5">
+                                                <div key={i} className="flex items-center space-x-3 text-slate-700 font-bold text-xs uppercase tracking-widest p-4 rounded-lg bg-slate-100 border border-primary/5">
                                                     <div className="text-accent">{isSpec ? <CheckCircle2 size={18} /> : feat.icon}</div>
                                                     <span>{isSpec ? feat : feat.text}</span>
                                                 </div>

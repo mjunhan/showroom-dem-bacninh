@@ -5,6 +5,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { Metadata } from "next";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
@@ -77,72 +79,76 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     });
 
     return (
-        <main className="min-h-screen pt-24 md:pt-32 pb-20 bg-secondary">
-            <article className="max-w-4xl mx-auto px-4 sm:px-6">
-                {/* Navigation */}
-                <Link
-                    href="/blog"
-                    className="inline-flex items-center gap-2 text-slate-400 hover:text-primary mb-8 font-bold text-xs uppercase tracking-widest transition-colors group"
-                >
-                    <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-                    Quay lại
-                </Link>
+        <>
+            <Navbar />
+            <main className="min-h-screen pt-24 md:pt-32 pb-20 bg-slate-50">
+                <article className="max-w-4xl mx-auto px-4 sm:px-6">
+                    {/* Navigation */}
+                    <Link
+                        href="/blog"
+                        className="inline-flex items-center gap-2 text-slate-400 hover:text-primary mb-8 font-bold text-xs uppercase tracking-widest transition-colors group"
+                    >
+                        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+                        Quay lại
+                    </Link>
 
-                <div className="bg-white rounded-lg border border-primary/5 shadow-sm overflow-hidden p-8 md:p-12 lg:p-16">
-                    {/* Header */}
-                    <header className="mb-12">
-                        <div className="flex flex-wrap items-center gap-4 text-accent text-[10px] font-bold uppercase tracking-widest mb-8">
-                            <div className="flex items-center gap-2">
-                                <Calendar size={14} />
-                                <span>{formattedDate}</span>
+                    <div className="bg-white rounded-lg border border-primary/5 shadow-sm overflow-hidden p-8 md:p-12 lg:p-16">
+                        {/* Header */}
+                        <header className="mb-12">
+                            <div className="flex flex-wrap items-center gap-4 text-accent text-[10px] font-bold uppercase tracking-widest mb-8">
+                                <div className="flex items-center gap-2">
+                                    <Calendar size={14} />
+                                    <span>{formattedDate}</span>
+                                </div>
+                                <div className="w-1 h-1 bg-accent/30 rounded-full" />
+                                <div className="flex items-center gap-2">
+                                    <User size={14} />
+                                    <span>Ban biên tập</span>
+                                </div>
                             </div>
-                            <div className="w-1 h-1 bg-accent/30 rounded-full" />
-                            <div className="flex items-center gap-2">
-                                <User size={14} />
-                                <span>Ban biên tập</span>
+
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-8 leading-tight tracking-tight font-playfair">
+                                {post.title}
+                            </h1>
+
+                            <p className="text-lg text-slate-500 font-medium leading-relaxed italic border-l-4 border-accent/20 pl-8 py-1">
+                                {post.excerpt}
+                            </p>
+                        </header>
+
+                        {/* Featured Image */}
+                        {post.mainImage && (
+                            <div className="relative w-full aspect-video mb-16 rounded-lg overflow-hidden border border-primary/5 shadow-lg">
+                                <Image
+                                    src={urlFor(post.mainImage).url()}
+                                    alt={post.title}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
                             </div>
+                        )}
+
+                        {/* Content */}
+                        <div className="prose prose-slate prose-lg max-w-none prose-headings:font-playfair prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-strong:text-slate-900 prose-blockquote:border-accent prose-blockquote:bg-slate-100 prose-blockquote:rounded-lg">
+                            <PortableText value={post.body} components={ptComponents} />
                         </div>
 
-                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-8 leading-tight tracking-tight font-playfair">
-                            {post.title}
-                        </h1>
-
-                        <p className="text-lg text-slate-500 font-medium leading-relaxed italic border-l-4 border-accent/20 pl-8 py-1">
-                            {post.excerpt}
-                        </p>
-                    </header>
-
-                    {/* Featured Image */}
-                    {post.mainImage && (
-                        <div className="relative w-full aspect-video mb-16 rounded-lg overflow-hidden border border-primary/5 shadow-lg">
-                            <Image
-                                src={urlFor(post.mainImage).url()}
-                                alt={post.title}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                        </div>
-                    )}
-
-                    {/* Content */}
-                    <div className="prose prose-slate prose-lg max-w-none prose-headings:font-playfair prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-strong:text-slate-900 prose-blockquote:border-accent prose-blockquote:bg-secondary/30 prose-blockquote:rounded-lg">
-                        <PortableText value={post.body} components={ptComponents} />
+                        {/* Footer */}
+                        <footer className="mt-20 pt-12 border-t border-slate-50 flex flex-col items-center text-center">
+                            <p className="text-slate-400 font-medium mb-8">Cảm ơn bạn đã đọc bài viết này!</p>
+                            <Link
+                                href="/blog"
+                                className="bg-primary text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-widest shadow-xl shadow-primary/10 hover:bg-primary-light transition-all active:scale-95 flex items-center gap-3"
+                            >
+                                <ArrowLeft size={18} />
+                                Khám phá bài viết khác
+                            </Link>
+                        </footer>
                     </div>
-
-                    {/* Footer */}
-                    <footer className="mt-20 pt-12 border-t border-slate-50 flex flex-col items-center text-center">
-                        <p className="text-slate-400 font-medium mb-8">Cảm ơn bạn đã đọc bài viết này!</p>
-                        <Link
-                            href="/blog"
-                            className="bg-primary text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-widest shadow-xl shadow-primary/10 hover:bg-primary-light transition-all active:scale-95 flex items-center gap-3"
-                        >
-                            <ArrowLeft size={18} />
-                            Khám phá bài viết khác
-                        </Link>
-                    </footer>
-                </div>
-            </article>
-        </main>
+                </article>
+            </main>
+            <Footer />
+        </>
     );
 }

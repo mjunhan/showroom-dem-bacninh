@@ -51,7 +51,7 @@ export function ProductList({ products }: ProductListProps) {
                                         "w-full text-left px-5 py-4 rounded-lg transition-all font-bold text-xs uppercase tracking-widest border",
                                         activeCategory === cat
                                             ? "bg-primary text-white border-primary shadow-lg shadow-primary/10"
-                                            : "bg-white text-slate-500 border-transparent hover:border-primary/20 hover:bg-secondary/30"
+                                            : "bg-white text-slate-500 border-transparent hover:border-primary/20 hover:bg-slate-100"
                                     )}
                                 >
                                     {cat}
@@ -73,7 +73,7 @@ export function ProductList({ products }: ProductListProps) {
                                         "w-full text-left px-5 py-4 rounded-lg transition-all font-bold text-xs uppercase tracking-widest border",
                                         activePriceRange.label === range.label
                                             ? "bg-primary text-white border-primary shadow-lg shadow-primary/10"
-                                            : "bg-white text-slate-500 border-transparent hover:border-primary/20 hover:bg-secondary/30"
+                                            : "bg-white text-slate-500 border-transparent hover:border-primary/20 hover:bg-slate-100"
                                     )}
                                 >
                                     {range.label}
@@ -94,7 +94,7 @@ export function ProductList({ products }: ProductListProps) {
                         <Filter size={18} className="text-primary" />
                         <span className="text-sm uppercase tracking-widest">Bộ lọc</span>
                     </div>
-                    <div className="flex items-center space-x-2 text-[10px] font-bold text-primary uppercase tracking-widest bg-secondary/50 px-3 py-1.5 rounded-lg">
+                    <div className="flex items-center space-x-2 text-[10px] font-bold text-primary uppercase tracking-widest bg-slate-100 px-3 py-1.5 rounded-lg">
                         <span>{activeCategory}</span>
                         <ChevronDown size={14} />
                     </div>
@@ -169,7 +169,7 @@ export function ProductList({ products }: ProductListProps) {
                         >
                             <div className="flex items-center justify-between mb-10">
                                 <h3 className="text-2xl font-bold font-playfair text-slate-900 tracking-tight">Bộ lọc sản phẩm</h3>
-                                <button onClick={() => setIsMobileFilterOpen(false)} className="p-3 bg-secondary/50 rounded-lg text-slate-400 hover:text-primary transition-colors">
+                                <button onClick={() => setIsMobileFilterOpen(false)} className="p-3 bg-slate-100 rounded-lg text-slate-400 hover:text-primary transition-colors">
                                     <X size={20} />
                                 </button>
                             </div>
@@ -186,7 +186,7 @@ export function ProductList({ products }: ProductListProps) {
                                                     "px-5 py-4 rounded-lg transition-all font-bold text-xs uppercase tracking-widest border",
                                                     activeCategory === cat
                                                         ? "bg-primary text-white border-primary"
-                                                        : "bg-secondary/30 text-slate-600 border-transparent"
+                                                        : "bg-slate-100 text-slate-600 border-transparent"
                                                 )}
                                             >
                                                 {cat}
@@ -206,7 +206,7 @@ export function ProductList({ products }: ProductListProps) {
                                                     "w-full text-left px-5 py-4 rounded-lg transition-all font-bold text-xs uppercase tracking-widest border",
                                                     activePriceRange.label === range.label
                                                         ? "bg-primary text-white border-primary"
-                                                        : "bg-secondary/30 text-slate-600 border-transparent"
+                                                        : "bg-slate-100 text-slate-600 border-transparent"
                                                 )}
                                             >
                                                 {range.label}

@@ -7,7 +7,7 @@ export default function ContactPage() {
     return (
         <>
             <Navbar />
-            <main className="pt-24 md:pt-32 pb-24 px-4 md:px-6 bg-secondary min-h-screen">
+            <main className="pt-24 md:pt-32 pb-24 px-4 md:px-6 bg-slate-50 min-h-screen">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
                         {/* Contact Info */}
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 border-t border-slate-50 pt-8">
                                     <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-secondary/50 rounded-lg flex items-center justify-center shrink-0 text-primary border border-primary/5">
+                                        <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center shrink-0 text-primary border border-primary/5">
                                             <MessageSquare size={20} />
                                         </div>
                                         <div>
@@ -63,7 +63,7 @@ export default function ContactPage() {
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-secondary/50 rounded-lg flex items-center justify-center shrink-0 text-primary border border-primary/5">
+                                        <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center shrink-0 text-primary border border-primary/5">
                                             <Clock size={20} />
                                         </div>
                                         <div>

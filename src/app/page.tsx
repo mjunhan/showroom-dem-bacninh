@@ -14,7 +14,7 @@ export default async function Home() {
     return (
         <>
             <Navbar />
-            <main className="bg-secondary min-h-screen">
+            <main className="bg-slate-50 min-h-screen">
                 <Hero />
                 <USP />
 
@@ -48,11 +48,11 @@ export default async function Home() {
                 </section>
 
                 {/* CTA Section */}
-                <section className="py-32 px-6 bg-secondary">
+                <section className="py-32 px-6 bg-slate-50">
                     <div className="max-w-7xl mx-auto bg-gradient-to-br from-primary to-primary-light rounded-lg p-12 md:p-24 relative overflow-hidden text-left shadow-2xl">
                         {/* Decorative Circles */}
                         <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
+                        <div className="absolute bottom-0 left-0 w-64 h-64 bg-slate-200/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl" />
 
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
                             <div className="max-w-xl">
@@ -62,7 +62,7 @@ export default async function Home() {
                                 </p>
                             </div>
                             <div className="flex flex-col sm:flex-row gap-6 shrink-0 w-full md:w-auto">
-                                <Link href="/contact" className="px-12 py-5 bg-white text-primary rounded-lg font-bold shadow-lg hover:bg-secondary transition-all duration-300 text-center uppercase tracking-widest text-sm">
+                                <Link href="/contact" className="px-12 py-5 bg-white text-primary rounded-lg font-bold shadow-lg hover:bg-slate-100 transition-all duration-300 text-center uppercase tracking-widest text-sm">
                                     Liên hệ ngay
                                 </Link>
                                 <a href="https://zalo.me" className="px-12 py-5 bg-white/10 text-white rounded-lg font-bold border border-white/20 hover:bg-white/20 transition-all duration-300 text-center uppercase tracking-widest text-sm">
