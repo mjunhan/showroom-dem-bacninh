@@ -38,7 +38,7 @@ export function Hero({
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0F2854]/95 via-[#0F2854]/80 to-transparent" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 text-white flex-1 flex flex-col justify-center pt-40 md:pt-64 pb-32">
+            <div className="container mx-auto px-6 relative z-10 text-white flex-1 flex flex-col justify-center pt-32 md:pt-48 pb-32">
                 <motion.div
                     {...{
                         initial: { opacity: 0, y: 30 },

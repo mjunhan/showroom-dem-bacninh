@@ -24,7 +24,7 @@ export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            setScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
