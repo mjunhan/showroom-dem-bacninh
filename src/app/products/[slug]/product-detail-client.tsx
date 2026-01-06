@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import { ProductCard } from "@/components/features/product-card";
 import { urlFor } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
+import { ProductGallery } from "@/components/product/product-gallery";
 
 interface ProductDetailClientProps {
     product: Product;
@@ -19,7 +20,10 @@ interface ProductDetailClientProps {
 }
 
 export default function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
-    const imageUrl = typeof product.image === 'string' ? product.image : urlFor(product.image).url();
+    // Prepare images array for gallery
+    const galleryImages = product.images && product.images.length > 0
+        ? product.images
+        : (product.image ? [product.image] : []);
 
     return (
         <>
@@ -36,40 +40,7 @@ export default function ProductDetailClient({ product, relatedProducts }: Produc
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                             {/* Image Gallery */}
                             <div className="p-4 md:p-8 bg-slate-50 border-r border-primary/5">
-                                <div className="space-y-6">
-                                    <div className="flex lg:block overflow-x-auto snap-x snap-mandatory scrollbar-hide lg:overflow-visible no-scrollbar">
-                                        {[imageUrl, imageUrl, imageUrl].map((img, i) => (
-                                            <motion.div
-                                                key={i}
-                                                {...{
-                                                    initial: i === 0 ? { opacity: 0, scale: 0.98 } : undefined,
-                                                    animate: i === 0 ? { opacity: 1, scale: 1 } : undefined
-                                                } as any}
-                                                className="relative aspect-square w-full shrink-0 rounded-lg overflow-hidden bg-white border border-primary/5 snap-start lg:mb-6 shadow-sm"
-                                            >
-                                                <Image
-                                                    src={img}
-                                                    alt={`${product.name} ${i}`}
-                                                    fill
-                                                    className="object-cover"
-                                                    priority={i === 0}
-                                                />
-                                            </motion.div>
-                                        ))}
-                                    </div>
-
-                                    {/* Thumbnails */}
-                                    <div className="hidden lg:grid grid-cols-3 gap-4">
-                                        {[imageUrl, imageUrl, imageUrl].map((img, i) => (
-                                            <div key={i} className={cn(
-                                                "relative aspect-square rounded-lg overflow-hidden border-2 cursor-pointer transition-all",
-                                                i === 0 ? "border-primary" : "border-transparent hover:border-accent/30"
-                                            )}>
-                                                <Image src={img} alt={`${product.name} ${i}`} fill className="object-cover" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
+                                <ProductGallery images={galleryImages} />
                             </div>
 
                             {/* Product Info */}

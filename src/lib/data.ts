@@ -5,6 +5,7 @@ export interface Product {
   price: number;
   originalPrice?: number;
   image: any;
+  images?: any[]; // Support for multiple images from Sanity
   category: string;
   status: string;
   brand: string;
