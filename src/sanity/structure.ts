@@ -22,9 +22,17 @@ export const structure: StructureResolver = (S) =>
             .schemaType('homePage')
             .documentId('homePage')
         ),
+      S.listItem()
+        .title('Contact Page')
+        .id('contactPage')
+        .child(
+          S.document()
+            .schemaType('contactPage')
+            .documentId('contactPage')
+        ),
       S.divider(),
       // All other document types (excluding singletons)
       ...S.documentTypeListItems().filter(
-        (listItem) => !['siteSettings', 'homePage'].includes(listItem.getId() as string)
+        (listItem) => !['siteSettings', 'homePage', 'contactPage'].includes(listItem.getId() as string)
       ),
     ])

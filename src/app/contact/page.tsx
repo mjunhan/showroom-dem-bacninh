@@ -1,7 +1,32 @@
-import { STORE_INFO } from "@/lib/data";
+import { client } from "@/sanity/lib/client";
 import { MapPin, Phone, MessageSquare, Clock, ArrowRight } from "lucide-react";
 
-export default function ContactPage() {
+export const revalidate = 0; // Ensure fresh data on every request for now, or use a reasonable revalidate time like 60
+
+async function getData() {
+    const query = `
+    {
+      "contact": *[_type == "contactPage"][0],
+      "siteSettings": *[_type == "siteSettings"][0]
+    }
+  `;
+    const data = await client.fetch(query);
+    return data;
+}
+
+export default async function ContactPage() {
+    const { contact, siteSettings } = await getData();
+
+    // Fallbacks if data is missing (e.g. initially empty)
+    const title = contact?.title || "Liên hệ với chúng tôi";
+    const description = contact?.description || "Chúng tôi luôn sẵn lòng lắng nghe và hỗ trợ bạn. Hãy ghé thăm showroom hoặc liên hệ qua các kênh trực tuyến để nhận tư vấn tốt nhất.";
+    const googleMapsUrl = contact?.googleMapsUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.863980665385!2d105.78954317512965!3d21.01823038061486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bd9861ca1%3A0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1709627786043!5m2!1svi!2s";
+    const operatingHours = contact?.operatingHours || "8:00 - 21:00 (Tất cả các ngày trong tuần)";
+
+    const address = siteSettings?.address || "Đang cập nhật...";
+    const phone = siteSettings?.hotline || "0987.654.321";
+    const zaloUrl = siteSettings?.zaloUrl || "#";
+
     return (
         <main className="pt-24 md:pt-32 pb-24 px-4 md:px-6 bg-slate-50 min-h-screen">
             <div className="max-w-7xl mx-auto">
@@ -13,11 +38,10 @@ export default function ContactPage() {
                                 Liên hệ với chúng tôi
                             </span>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 font-playfair leading-tight text-slate-900">
-                                Showroom Chăn Ga <br />
-                                <span className="text-primary italic">Bedding Bắc Ninh</span>
+                                {title}
                             </h1>
                             <p className="text-slate-500 text-lg leading-relaxed max-w-lg font-medium">
-                                Chúng tôi luôn sẵn lòng lắng nghe và hỗ trợ bạn. Hãy ghé thăm showroom hoặc liên hệ qua các kênh trực tuyến để nhận tư vấn tốt nhất.
+                                {description}
                             </p>
                         </div>
 
@@ -28,7 +52,7 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold mb-2 text-slate-900">Địa chỉ Showroom</h3>
-                                    <p className="text-slate-600 leading-relaxed font-medium">{STORE_INFO.address}</p>
+                                    <p className="text-slate-600 leading-relaxed font-medium">{address}</p>
                                     <a href="https://maps.google.com" target="_blank" className="text-primary font-bold mt-2 inline-flex items-center space-x-2 hover:text-accent transition-colors text-sm uppercase tracking-wider">
                                         <span>Chỉ đường trên Google Maps</span>
                                         <ArrowRight size={14} />
@@ -42,8 +66,8 @@ export default function ContactPage() {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold mb-2 text-slate-900">Số điện thoại / Hotline</h3>
-                                    <a href={`tel:${STORE_INFO.phone}`} className="text-2xl md:text-3xl font-bold text-primary hover:text-accent transition-colors tracking-tight">
-                                        {STORE_INFO.phone}
+                                    <a href={`tel:${phone}`} className="text-2xl md:text-3xl font-bold text-primary hover:text-accent transition-colors tracking-tight">
+                                        {phone}
                                     </a>
                                 </div>
                             </div>
@@ -55,7 +79,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-[10px] text-slate-400 uppercase tracking-widest mb-0.5">Chat Zalo</h3>
-                                        <a href={STORE_INFO.zalo} target="_blank" className="text-primary font-bold hover:text-accent transition-colors text-sm">Nhấn để nhắn tin</a>
+                                        <a href={zaloUrl} target="_blank" className="text-primary font-bold hover:text-accent transition-colors text-sm">Nhấn để nhắn tin</a>
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-4">
@@ -64,7 +88,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-[10px] text-slate-400 uppercase tracking-widest mb-0.5">Giờ mở cửa</h3>
-                                        <p className="text-primary font-bold text-sm">{STORE_INFO.openingHours}</p>
+                                        <p className="text-primary font-bold text-sm">{operatingHours}</p>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +99,7 @@ export default function ContactPage() {
                     <div className="relative rounded-lg overflow-hidden bg-white border border-primary/5 shadow-sm p-4 h-[500px] lg:h-auto">
                         <div className="relative w-full h-full rounded-lg overflow-hidden border border-slate-100">
                             <iframe
-                                src={STORE_INFO.location}
+                                src={googleMapsUrl}
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
