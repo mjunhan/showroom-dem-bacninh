@@ -20,7 +20,7 @@ export default async function ContactPage() {
     // Fallbacks if data is missing (e.g. initially empty)
     const title = contact?.title || "Liên hệ với chúng tôi";
     const description = contact?.description || "Chúng tôi luôn sẵn lòng lắng nghe và hỗ trợ bạn. Hãy ghé thăm showroom hoặc liên hệ qua các kênh trực tuyến để nhận tư vấn tốt nhất.";
-    const googleMapsUrl = contact?.googleMapsUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.863980665385!2d105.78954317512965!3d21.01823038061486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bd9861ca1%3A0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1709627786043!5m2!1svi!2s";
+    const googleMapsUrl = extractMapUrl(contact?.googleMapsUrl) || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.863980665385!2d105.78954317512965!3d21.01823038061486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab9bd9861ca1%3A0xe7887f7b72ca17a9!2zSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1709627786043!5m2!1svi!2s";
     const operatingHours = contact?.operatingHours || "8:00 - 21:00 (Tất cả các ngày trong tuần)";
 
     const address = siteSettings?.address || "Đang cập nhật...";
