@@ -7,6 +7,33 @@ export function urlFor(source: any) {
     return builder.image(source)
 }
 
+// Singleton: Site Settings
+export async function getSiteSettings() {
+    return await client.fetch(
+        `*[_type == "siteSettings"][0] {
+            siteName,
+            hotline,
+            zaloUrl,
+            address,
+            logo,
+            socialLinks
+        }`
+    )
+}
+
+// Singleton: Home Page
+export async function getHomePage() {
+    return await client.fetch(
+        `*[_type == "homePage"][0] {
+            heroTitle,
+            heroSubtitle,
+            heroImage,
+            heroButtonText,
+            features
+        }`
+    )
+}
+
 export async function getProducts() {
     return await client.fetch(`*[_type == "product"] | order(_createdAt desc)`)
 }

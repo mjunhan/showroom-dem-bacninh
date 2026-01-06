@@ -5,7 +5,19 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 
-export function Hero() {
+interface HeroProps {
+    title?: string;
+    subtitle?: string;
+    buttonText?: string;
+    imageUrl?: string;
+}
+
+export function Hero({
+    title = "Khởi Đầu Giấc Ngủ Tuyệt Vời",
+    subtitle = "Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ tinh tế tại showroom bedding lớn nhất Bắc Ninh.",
+    buttonText = "Trải nghiệm ngay",
+    imageUrl = "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
+}: HeroProps) {
     const scrollToProducts = () => {
         const section = document.getElementById("featured-products");
         if (section) {
@@ -17,7 +29,7 @@ export function Hero() {
         <section className="relative min-h-screen w-full overflow-hidden flex flex-col">
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=2071&auto=format&fit=crop"
+                    src={imageUrl}
                     alt="Bedding Hero"
                     fill
                     className="object-cover"
@@ -39,18 +51,17 @@ export function Hero() {
                         Bộ Sưu Tập 2024
                     </span>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-serif mb-8 leading-[1.1] tracking-tight text-white">
-                        Khởi Đầu <br />
-                        <span className="text-accent italic">Giấc Ngủ Tuyệt Vời</span>
+                        {title}
                     </h1>
                     <p className="text-lg md:text-xl text-secondary mb-12 leading-relaxed max-w-2xl font-medium">
-                        Khám phá sự giao thoa giữa nghệ thuật chế tác và giấc ngủ tinh tế tại showroom bedding lớn nhất Bắc Ninh.
+                        {subtitle}
                     </p>
                     <div className="flex flex-wrap gap-4">
                         <button
                             onClick={scrollToProducts}
                             className="h-14 px-10 bg-accent hover:bg-accent/90 text-primary rounded-lg font-bold text-sm uppercase tracking-widest transition-all duration-300 shadow-xl cursor-pointer"
                         >
-                            Trải nghiệm ngay
+                            {buttonText}
                         </button>
                         <Link
                             href="/contact"

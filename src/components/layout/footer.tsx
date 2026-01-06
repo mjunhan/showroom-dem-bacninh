@@ -1,15 +1,26 @@
 import Link from "next/link";
-import { STORE_INFO } from "@/lib/data";
-import { MapPin, Phone, MessageSquare, Clock } from "lucide-react";
+import { MapPin, Phone, MessageSquare } from "lucide-react";
 
-export function Footer() {
+interface FooterProps {
+    siteName?: string;
+    hotline?: string;
+    address?: string;
+    zaloUrl?: string;
+}
+
+export function Footer({
+    siteName = "Showroom Bedding",
+    hotline = "0123456789",
+    address = "123 Đường ABC, Quận XYZ, TP HCM",
+    zaloUrl = "https://zalo.me"
+}: FooterProps) {
     return (
         <footer className="bg-primary text-slate-400 py-24 px-6 border-t border-white/5">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
                 {/* Brand */}
                 <div className="col-span-1 md:col-span-2">
                     <h2 className="text-2xl font-bold font-sans tracking-tight text-white mb-6">
-                        Showroom <span className="text-accent italic font-serif">Bedding</span>
+                        {siteName}
                     </h2>
                     <p className="max-w-md mb-8 leading-relaxed text-slate-400">
                         Nơi khơi nguồn cảm hứng cho không gian sống thượng lưu. Chúng tôi cung cấp giải pháp giấc ngủ hoàn hảo với những sản phẩm chăn ga gối đệm tinh hoa nhất.
@@ -33,22 +44,22 @@ export function Footer() {
                     <ul className="space-y-5">
                         <li className="flex items-start space-x-4">
                             <MapPin className="text-accent shrink-0" size={18} />
-                            <span className="text-sm font-bold leading-snug">{STORE_INFO.address}</span>
+                            <span className="text-sm font-bold leading-snug">{address}</span>
                         </li>
                         <li className="flex items-center space-x-4">
                             <Phone className="text-accent shrink-0" size={18} />
-                            <a href={`tel:${STORE_INFO.phone}`} className="hover:text-secondary transition-colors duration-300 text-sm font-bold cursor-pointer">{STORE_INFO.phone}</a>
+                            <a href={`tel:${hotline}`} className="hover:text-secondary transition-colors duration-300 text-sm font-bold cursor-pointer">{hotline}</a>
                         </li>
                         <li className="flex items-center space-x-4">
                             <MessageSquare className="text-accent shrink-0" size={18} />
-                            <a href={STORE_INFO.zalo} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-300 text-sm font-bold cursor-pointer">Chat Zalo</a>
+                            <a href={zaloUrl} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors duration-300 text-sm font-bold cursor-pointer">Chat Zalo</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
             <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-sm text-slate-500">
-                <p>&copy; {new Date().getFullYear()} {STORE_INFO.name}. Sophisticated Sleep Experience.</p>
+                <p>&copy; {new Date().getFullYear()} {siteName}. Sophisticated Sleep Experience.</p>
             </div>
         </footer>
     );

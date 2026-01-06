@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { STORE_INFO } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -14,7 +13,12 @@ const navLinks = [
     { name: "Liên hệ", href: "/contact" },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+    siteName?: string;
+    hotline?: string;
+}
+
+export function Navbar({ siteName = "Showroom Bedding", hotline = "0123456789" }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -45,7 +49,7 @@ export function Navbar() {
                         } as any}
                         className="text-xl md:text-2xl font-bold font-sans tracking-tight text-primary transition-all duration-200"
                     >
-                        Showroom <span className="text-accent italic font-serif">Bedding</span>
+                        {siteName}
                     </motion.span>
                 </Link>
 
@@ -61,7 +65,7 @@ export function Navbar() {
                         </Link>
                     ))}
                     <a
-                        href={`tel:${STORE_INFO.phone}`}
+                        href={`tel:${hotline}`}
                         className="flex items-center space-x-2 bg-primary text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-primary-light transition-all duration-200 shadow-md active:scale-95 cursor-pointer"
                     >
                         <Phone size={14} />
@@ -101,11 +105,11 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <a
-                                href={`tel:${STORE_INFO.phone}`}
+                                href={`tel:${hotline}`}
                                 className="flex items-center justify-center space-x-2 bg-primary text-white py-3 rounded-xl font-bold hover:bg-primary-light transition-all duration-200 cursor-pointer"
                             >
                                 <Phone size={18} />
-                                <span>Gọi ngay: {STORE_INFO.phone}</span>
+                                <span>Gọi ngay: {hotline}</span>
                             </a>
                         </div>
                     </motion.div>
